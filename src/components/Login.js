@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default class Login extends React.Component{
     state={
         user_name:'',
@@ -13,10 +14,30 @@ export default class Login extends React.Component{
         })
     }
 
+    handleSubmit=(e)=>{
+        e.preventDefault()
+        fetch(`http://localhost:3000/tokens`,{
+            method:"POST",
+            headers:{
+                'Content-Type':"application/json",
+                "Accept":"application/json"
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(response=>response.json())
+        .then((data)=>{
+            if (!data.errors){
+                localStorage.token=data.token
+                this.props.onLogin(this.state)
+             }
+        })
+        
+    }
+
     render(){
         return(
-            <React.Fragment>
-                <form>
+            <React.Fragment >
+                <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleInputChange} value={this.state.user_name} type="text" placeholder="user name" name="user_name"/>
                 <input onChange={this.handleInputChange} value={this.state.password}  type="password" placeholder="password" name="password"/>
                 <input type="submit" value="submit"/>
