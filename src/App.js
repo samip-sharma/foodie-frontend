@@ -14,6 +14,8 @@ class App extends React.Component {
     console.log(user_data)
   }
 
+  componentDidMount
+
   render(){
     // console.log(this.state)
     return (
