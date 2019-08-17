@@ -29,6 +29,7 @@ export default class Login extends React.Component{
             if (!data.errors){
                 localStorage.token=data.token
                 this.props.onLogin(this.state)
+                this.props.history.push("/home")
              }
         })
         
