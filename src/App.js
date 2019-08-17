@@ -1,15 +1,18 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login'
-import ReturnMap from './components/Map'
+// import ReturnMap from './components/Map'
 import { Switch, Route } from 'react-router-dom'
+import Home from './components/Home'
+
 
 
 class App extends React.Component {
   state={
     name:'',
     user_name:'',
-    defaultQuery:'?term=food&location=nyc'
+    searchTerm:'',
+    AllRestaurant:[]
   }
 
   onLogin=(user_data)=>{
@@ -17,18 +20,23 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    fetch("http://localhost:3000/getRestaurant")
+    .then(resp=>resp.json())
+    .then((data)=>{
+      this.setState({
+        AllRestaurant:data.businesses
+      })
+    })
   }
 
 
 
   render(){
     return (
-      <React.Fragment>
-        <div className="App">
-        <Login onLogin={this.onLogin} />
-        {/* <ReturnMap /> */}
-        </div>
-      </React.Fragment>
+      <Switch>
+        <Route path='/login' render={(routerProps)=><Login  {...routerProps} onLogin={this.onLogin} />} />
+        <Route path='/home' render={(routerProps)=><Home {...routerProps} AllRestaurant={this.state.AllRestaurant}/>} />
+      </Switch>
     )
   }
 }
