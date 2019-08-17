@@ -4,6 +4,7 @@ import Login from './components/Login'
 // import ReturnMap from './components/Map'
 import { Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
+import RestaurantDetail from './components/RestaurantDetail'
 
 
 
@@ -12,7 +13,8 @@ class App extends React.Component {
     name:'',
     user_name:'',
     searchTerm:'',
-    AllRestaurant:[]
+    AllRestaurant:[],
+    detailRestaurant:{}
   }
 
   onLogin=(user_data)=>{
@@ -34,8 +36,10 @@ class App extends React.Component {
   render(){
     return (
       <Switch>
-        <Route path='/login' render={(routerProps)=><Login  {...routerProps} onLogin={this.onLogin} />} />
+        <Route exact path='/' render={(routerProps)=><Login  {...routerProps} onLogin={this.onLogin} />} />
         <Route path='/home' render={(routerProps)=><Home {...routerProps} AllRestaurant={this.state.AllRestaurant}/>} />
+        <Route path='/show' render={(routerProps)=><RestaurantDetail detailRestaurant={this.state.detailRestaurant} {...routerProps}/>} />
+
       </Switch>
     )
   }

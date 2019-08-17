@@ -1,12 +1,12 @@
 import React from 'react'
-import Restaurant from './Restaurant'
+import RestaurantInHome from './ResturantInHome'
 
 
 
 export default class Home extends React.Component{
     render(){
         let arr=this.props.AllRestaurant.map((restaurant)=>{
-            return <Restaurant restaurant={restaurant} />
+            return <RestaurantInHome history={this.props.history}  restaurant={restaurant} />
         })
         return(
             <React.Fragment>

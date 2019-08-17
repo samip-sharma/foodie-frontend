@@ -36,6 +36,10 @@ export default class Login extends React.Component{
     }
 
     render(){
+        if(localStorage.token){
+            this.props.history.push("/home") 
+        }
+
         return(
             <React.Fragment >
                 <form onSubmit={this.handleSubmit}>
