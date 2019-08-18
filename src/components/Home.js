@@ -17,7 +17,7 @@ export default class Home extends React.Component{
         })
         return(
             <React.Fragment>
-            <FoodieNavbar />
+            <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
                 {localStorage.token ? arr : "Dont be too smart"}
             </React.Fragment>
         )
