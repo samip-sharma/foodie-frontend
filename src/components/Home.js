@@ -1,5 +1,6 @@
 import React from 'react'
 import RestaurantInHome from './ResturantInHome'
+import FoodieNavbar from './FoodieNavbar'
 
 
 
@@ -16,6 +17,7 @@ export default class Home extends React.Component{
         })
         return(
             <React.Fragment>
+            <FoodieNavbar />
                 {localStorage.token ? arr : "Dont be too smart"}
             </React.Fragment>
         )

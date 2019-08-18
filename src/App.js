@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
 import RestaurantDetail from './components/RestaurantDetail'
 import Friendlist from './components/Friendlist'
+import Register from './components/Register'
 
 
 
@@ -38,8 +39,9 @@ class App extends React.Component {
   render(){
     return (
       <Switch>
-        <Route exact path='/' render={(routerProps)=><Login  {...routerProps} onLogin={this.onLogin} />} />
-        <Route path='/home' render={(routerProps)=><Home {...routerProps} AllRestaurant={this.state.AllRestaurant}/>} />
+        <Route exact path='/' render={(routerProps)=> <Login  {...routerProps} onLogin={this.onLogin} />} />
+        <Route path='/home' render={(routerProps)=> <Home {...routerProps} AllRestaurant={this.state.AllRestaurant}/>} />
+        <Route path='/register' render={(routerProps)=> <Register {...routerProps} />} />
         <Route path='/friendlist' render={(routerProps)=><Friendlist {...routerProps}/>} />
         <Route path='/show' render={(routerProps)=><RestaurantDetail detailRestaurant={this.state.detailRestaurant} {...routerProps}/>} />
 

@@ -21,7 +21,7 @@ export default class RestaurantDetail extends React.Component{
         console.log(this.state)
         return(
             <React.Fragment>
-                <img src={this.state.restaurant.image_url} />
+                <img className="restaurant-detail-image" src={this.state.restaurant.image_url} />
                 <h4>{this.state.restaurant.name}</h4>
             </React.Fragment>
         )

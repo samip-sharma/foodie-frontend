@@ -14,5 +14,17 @@ code {
 
 .each-home-image{
   height: 200px;
-  
+  width:200px;
+  object-fit:cover;
+}
+
+.restaurant-detail-image {
+  height:600px;
+  width:100%;
+  object-fit:cover;
+}
+
+.navbar-container {
+  position: fixed;
+  width: 100%;
 }
