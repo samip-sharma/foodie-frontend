@@ -8,7 +8,7 @@ export default class RestaurantDetail extends React.Component{
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/getRestaurantDetail/${localStorage.id}`)
+        fetch(`http://localhost:3000/getRestaurantDetail/${localStorage.restaurant_id}`)
         .then(response=>response.json())
         .then((data)=> {
             this.setState({

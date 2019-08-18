@@ -4,7 +4,7 @@ import React from 'react'
 
 export default class RestaurantInHome extends React.Component{
     handleClick=(id)=>{
-       localStorage.id=id
+       localStorage.restaurant_id=id
        this.props.history.push("/show")
 
     }
