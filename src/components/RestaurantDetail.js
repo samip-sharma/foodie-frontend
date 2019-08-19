@@ -5,7 +5,8 @@ import FoodieNavbar from './FoodieNavbar'
 export default class RestaurantDetail extends React.Component{
 
     state={
-        restaurant:[]
+        restaurant:[],
+        liked:false
     }
 
     componentDidMount(){
@@ -17,14 +18,14 @@ export default class RestaurantDetail extends React.Component{
             "Authorization":localStorage.token
             },
             body:JSON.stringify(
-            {user_id:localStorage.user_id,
-            Authorization:localStorage.token}
+            {user_id:localStorage.user_id,}
             )
           })
         .then(response=>response.json())
         .then((data)=> {
             console.log(data)
             this.setState({
+                liked:data.liked,
                 restaurant:{...data}
             })
         })  
@@ -43,6 +44,10 @@ export default class RestaurantDetail extends React.Component{
             {user_id:localStorage.user_id,
             restaurant_id:localStorage.restaurant_id}
             )
+        }).then(()=>{
+            this.setState({
+                liked:!this.state.liked
+            })
         })
     }
 
@@ -52,7 +57,7 @@ export default class RestaurantDetail extends React.Component{
         let displayCategories;
         let displayAddress;
         if (this.state.restaurant.length!==0){
-            console.log(this.state.restaurant)
+            // console.log(this.state.restaurant)
             displayCategories = categories.map(category => <span>~{category.title}~ </span>);
             displayAddress = location.display_address.join(", ");
         }
@@ -67,7 +72,7 @@ export default class RestaurantDetail extends React.Component{
                 <p>Rating: { rating}</p>
                 <p>{ price }</p>
                 <p>Categories: { displayCategories }</p>
-                <button onClick={ this.handleLike } >Favorite</button>
+                <button onClick={ this.handleLike } >{this.state.liked? "Unfav" : "fav"}</button>
                 <br></br>
                 <br></br>
                 <label>Add a Review: </label>
