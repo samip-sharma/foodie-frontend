@@ -1,12 +1,15 @@
 import React from 'react'
 import FoodieNavbar from './FoodieNavbar'
+import RestaurantComments from './RestaurantComments'
 
 
 export default class RestaurantDetail extends React.Component{
 
     state={
         restaurant:[],
-        liked:false
+        liked:false,
+        commentText:'',
+        comments:[]
     }
 
     componentDidMount(){
@@ -18,17 +21,40 @@ export default class RestaurantDetail extends React.Component{
             "Authorization":localStorage.token
             },
             body:JSON.stringify(
-            {user_id:localStorage.user_id,}
+            {user_id:localStorage.user_id}
             )
           })
         .then(response=>response.json())
         .then((data)=> {
-            console.log(data)
+            // console.log(data)
             this.setState({
                 liked:data.liked,
                 restaurant:{...data}
             })
         })  
+
+
+
+        fetch("http://localhost:3000/getComments",{
+            method:"POST",
+            headers:{
+            "Content-Type":"application/json",
+            "Accepts":"application/json",
+            "Authorization":localStorage.token
+            },
+            body:JSON.stringify(
+            {user_id:localStorage.user_id,
+             restaurant_id:localStorage.restaurant_id
+            }
+            )
+          })
+          .then(resp=>resp.json())
+          .then((data)=>{
+              console.log(data)
+              this.setState({
+                  comments:data
+              })
+          })
     }
 
     handleLike=()=>{
@@ -50,6 +76,36 @@ export default class RestaurantDetail extends React.Component{
             })
         })
     }
+
+
+    handleCommentSubmit=()=>{
+        fetch('http://localhost:3000/addComments',{
+            method:"POST",
+            headers:{
+            "Content-Type":"application/json",
+            "Accepts":"application/json",
+            "Authorization":localStorage.token
+            },
+            body:JSON.stringify(
+            {user_id:localStorage.user_id,
+            restaurant_id:localStorage.restaurant_id,
+            context:this.state.commentText}
+            )
+          })
+          .then(resp=>(resp.json()))
+          .then((data)=>{
+              this.setState({
+                  comments:[...this.state.comments,data]
+              })
+          })
+    }
+
+    handleCommentTypeChange=(e)=>{
+        this.setState({
+            commentText:e.target.value
+        })
+    }
+
 
     render(){
         const {name, categories, rating, price, location, display_phone} = this.state.restaurant
@@ -75,11 +131,12 @@ export default class RestaurantDetail extends React.Component{
                 <button onClick={ this.handleLike } >{this.state.liked? "Unfav" : "fav"}</button>
                 <br></br>
                 <br></br>
+                <RestaurantComments comments={this.state.comments}/>
                 <label>Add a Review: </label>
                 <br></br>
-                <textarea></textarea>
+                <textarea value={this.state.commentText} onChange={this.handleCommentTypeChange}></textarea>
                 <br></br>
-                <input type="submit" />
+                <input type="submit" onClick={this.handleCommentSubmit} />
             </React.Fragment>
         )
     }
