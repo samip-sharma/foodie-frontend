@@ -43,7 +43,7 @@ export default class RestaurantDetail extends React.Component{
             {user_id:localStorage.user_id,
             restaurant_id:localStorage.restaurant_id}
             )
-          })
+        })
     }
 
     render(){
