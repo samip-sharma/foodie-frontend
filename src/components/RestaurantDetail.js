@@ -9,9 +9,21 @@ export default class RestaurantDetail extends React.Component{
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/getRestaurantDetail/${localStorage.restaurant_id}`)
+        fetch(`http://localhost:3000/getRestaurantDetail/${localStorage.restaurant_id}`,{
+            method:"POST",
+            headers:{
+            "Content-Type":"application/json",
+            "Accepts":"application/json",
+            "Authorization":localStorage.token
+            },
+            body:JSON.stringify(
+            {user_id:localStorage.user_id,
+            Authorization:localStorage.token}
+            )
+          })
         .then(response=>response.json())
         .then((data)=> {
+            console.log(data)
             this.setState({
                 restaurant:{...data}
             })
@@ -20,6 +32,18 @@ export default class RestaurantDetail extends React.Component{
 
     handleLike=()=>{
         console.log("like")
+        fetch(`http://localhost:3000/addlike`,{
+            method:"POST",
+            headers:{
+            "Content-Type":"application/json",
+            "Accepts":"application/json",
+            "Authorization":localStorage.token
+            },
+            body:JSON.stringify(
+            {user_id:localStorage.user_id,
+            restaurant_id:localStorage.restaurant_id}
+            )
+          })
     }
 
     render(){
