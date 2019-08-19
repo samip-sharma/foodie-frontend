@@ -68,7 +68,8 @@ export default class RestaurantDetail extends React.Component{
             },
             body:JSON.stringify(
             {user_id:localStorage.user_id,
-            restaurant_id:localStorage.restaurant_id}
+            restaurant_id:localStorage.restaurant_id,
+            restaurant_name:this.state.restaurant.name}
             )
         }).then(()=>{
             this.setState({
@@ -89,7 +90,8 @@ export default class RestaurantDetail extends React.Component{
             body:JSON.stringify(
             {user_id:localStorage.user_id,
             restaurant_id:localStorage.restaurant_id,
-            context:this.state.commentText}
+            context:this.state.commentText,
+            restaurant_name:this.state.restaurant.name}
             )
           })
           .then(resp=>(resp.json()))

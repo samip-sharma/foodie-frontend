@@ -40,13 +40,13 @@ class FoodieSidebar extends React.Component {
 
   render(){
       console.log(this.state.likedRestaurants)
-      // let allLikedRestaurants = this.state.likedRestaurants.map((restaurant)=>{
-      //     return <li>{ restaurant.name }</li>
-      // })
+      let allLikedRestaurants = this.state.likedRestaurants.map((restaurant)=>{
+          return <li>{ restaurant.name }</li>
+      })
 
       return(
           <div className="side-bar">
-              {<p>sudyfgsduyfg</p>}
+              {allLikedRestaurants}
           </div>
       )
   }
