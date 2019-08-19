@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 class FoodieNavbar extends React.Component {
@@ -16,7 +16,8 @@ class FoodieNavbar extends React.Component {
 
     handleSearchSubmit=(e)=>{
         e.preventDefault()
-        this.props.handleSearchRestaurant(this.state.searchTerm)
+       if (this.state.searchTerm!==
+        "") this.props.handleSearchRestaurant(this.state.searchTerm)
     }
 
     handleFriendlistClick=()=>{
@@ -42,7 +43,7 @@ class FoodieNavbar extends React.Component {
                             </Nav>
                             <Form  inline>
                             <FormControl type="text" onChange={this.handleSearchInput} value={this.state.searchTerm}  placeholder="Search" className="mr-sm-2" />
-                            <Button onClick={this.handleSearchSubmit} variant="outline-success">Search</Button>
+                            <button onClick={this.handleSearchSubmit} >Search</button>
                             </Form>
                     </Navbar.Collapse>
                 </Navbar>

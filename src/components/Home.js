@@ -6,9 +6,9 @@ import FoodieNavbar from './FoodieNavbar'
 
 export default class Home extends React.Component{
     componentDidMount(){
-        fetch("https://localhost:3000/getFavRestaurants/1")
-        .then(resp=>resp.json())
-        .then(console.log)
+        // fetch("https://localhost:3000/getFavRestaurants/1")
+        // .then(resp=>resp.json())
+        // .then(console.log)
     }
 
     render(){

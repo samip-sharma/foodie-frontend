@@ -17,6 +17,10 @@ export default class RestaurantDetail extends React.Component{
         })  
     }
 
+    handleLike=()=>{
+        console.log("like")
+    }
+
     render(){
         const {name,categories,rating,price}=this.state.restaurant
         let displayCategories
@@ -31,6 +35,7 @@ export default class RestaurantDetail extends React.Component{
                 <p>Rating: { rating}</p>
                 <p>{ price }</p>
                 <p>Categories: { displayCategories }</p>
+                <button onClick={this.handleLike} >Favorite</button>
             </React.Fragment>
         )
     }
