@@ -40,3 +40,9 @@ code {
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
 }
+
+
+.each-map{
+height:100px;
+width:100px;
+}
