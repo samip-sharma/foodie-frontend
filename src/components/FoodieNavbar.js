@@ -42,7 +42,7 @@ class FoodieNavbar extends React.Component {
                             </Nav>
                             <Form  inline>
                             <FormControl type="text" onChange={this.handleSearchInput} value={this.state.searchTerm}  placeholder="Search" className="mr-sm-2" />
-                            <Button onClick={this.handleSearchSubmit} variant="outline-success">Search</Button>
+                            <button onClick={this.handleSearchSubmit} variant="outline-success">Search</button>
                             </Form>
                     </Navbar.Collapse>
                 </Navbar>
