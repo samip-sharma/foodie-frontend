@@ -12,7 +12,7 @@ export default class RestaurantInHome extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <img onClick={()=>this.handleClick(this.props.restaurant.id)} className={"each-home-image"} src={this.props.restaurant.image_url} />
+                <img alt={this.props.restaurant.name} onClick={()=>this.handleClick(this.props.restaurant.id)} className={"each-home-image"} src={this.props.restaurant.image_url} />
             </React.Fragment>
         )
     }

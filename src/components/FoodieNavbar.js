@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 class FoodieNavbar extends React.Component {
 
@@ -13,7 +14,8 @@ class FoodieNavbar extends React.Component {
         })
     }
 
-    handleSearchSubmit=()=>{
+    handleSearchSubmit=(e)=>{
+        e.preventDefault()
         this.props.handleSearchRestaurant(this.state.searchTerm)
     }
 
@@ -24,7 +26,7 @@ class FoodieNavbar extends React.Component {
         return(
             <div className="navbar-container">
                 <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="#home">Foodie</Navbar.Brand>
+                    <Link to="/home">Foodie</Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

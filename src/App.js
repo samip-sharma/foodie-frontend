@@ -17,7 +17,9 @@ class App extends React.Component {
     user_name:'',
     searchTerm:'',
     AllRestaurant:[],
-    detailRestaurant:{}
+    detailRestaurant:{},
+    xcoordinate:40.700862,
+    ycoordinate:-73.987472
   }
 
   onLogin=(user_data)=>{
@@ -25,6 +27,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    this.getGeoLocation()
    this.getRestaurantFromYelp()
   }
 
@@ -32,8 +35,34 @@ class App extends React.Component {
     this.getRestaurantFromYelp(term)
   }
 
+  getGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.setState((prevState)=>({
+            xcoordinate:position.coords.latitude,
+            ycoordinate:position.coords.longitude
+          }),this.getRestaurantFromYelp
+          )
+        }
+      )
+    } else {
+       console.log("error")
+    }
+  }
+
   getRestaurantFromYelp=(term="lunch")=>{
-    fetch(`http://localhost:3000/getRestaurant/${term}`)
+    fetch(`http://localhost:3000/getRestaurant/${term}`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Accepts":"application/json"
+      },
+      body:JSON.stringify(
+       { xcoo:this.state.xcoordinate,
+        ycoo:this.state.ycoordinate}
+      )
+    })
     .then(resp=>resp.json())
     .then((data)=>{
       this.setState({
