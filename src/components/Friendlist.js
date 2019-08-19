@@ -7,7 +7,8 @@ export default class Friendlist extends React.Component{
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/following/${localStorage.user_id}`)
+        fetch(`http://localhost:3000/following/${localStorage.user_id}`,
+        )
         .then(resp=>resp.json())
         .then((data)=>{
                 this.setState({
