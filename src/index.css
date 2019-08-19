@@ -27,6 +27,7 @@ code {
 .navbar-container {
   position: fixed;
   width: 100%;
+  z-index: 2;
 }
 
 .side-bar {
@@ -36,7 +37,7 @@ code {
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   right: 0;
-  background-color:blueviolet; /* Black */
+  background-color:rgb(94, 73, 73); /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+  padding-top: 60px;
 }
