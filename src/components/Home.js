@@ -1,14 +1,15 @@
 import React from 'react'
 import RestaurantInHome from './ResturantInHome'
 import FoodieNavbar from './FoodieNavbar'
+import FoodieSidebar from './FoodieSidebar';
 
 
 
 export default class Home extends React.Component{
     componentDidMount(){
-        // fetch("https://localhost:3000/getFavRestaurants/1")
-        // .then(resp=>resp.json())
-        // .then(console.log)
+        fetch("https://localhost:3000/getFavRestaurants/2")
+        .then(resp=>resp.json())
+        .then(console.log)
     }
 
     render(){
@@ -19,6 +20,7 @@ export default class Home extends React.Component{
             <React.Fragment>
             <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
                 {localStorage.token ? arr : "Dont be too smart"}
+            <FoodieSidebar />
             </React.Fragment>
         )
     }
