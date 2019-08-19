@@ -96,9 +96,16 @@ export default class RestaurantDetail extends React.Component{
           })
           .then(resp=>(resp.json()))
           .then((data)=>{
+
+            if (this.state.comments.length>0){
               this.setState({
                   comments:[...this.state.comments,data]
               })
+            }else{
+                this.setState({
+                    comments:[data]
+                }) 
+            }
           })
     }
 

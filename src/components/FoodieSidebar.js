@@ -46,7 +46,7 @@ class FoodieSidebar extends React.Component {
 
       return(
           <div className="side-bar">
-              {allLikedRestaurants}
+              { allLikedRestaurants }
           </div>
       )
   }
