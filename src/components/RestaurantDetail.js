@@ -1,6 +1,7 @@
 import React from 'react'
 import FoodieNavbar from './FoodieNavbar'
 import RestaurantComments from './RestaurantComments'
+import Map from './Map'
 
 
 export default class RestaurantDetail extends React.Component{
@@ -146,6 +147,7 @@ export default class RestaurantDetail extends React.Component{
                 <textarea value={this.state.commentText} onChange={this.handleCommentTypeChange}></textarea>
                 <br></br>
                 <input type="submit" onClick={this.handleCommentSubmit} />
+                <Map coordinates={this.state.restaurant.coordinates}/>
             </React.Fragment>
         )
     }

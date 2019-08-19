@@ -39,5 +39,11 @@ code {
   right: 0;
   background-color:rgb(94, 73, 73); /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px;
+  padding-top: 20px;
+}
+
+
+.each-map{
+height:100px;
+width:100px;
 }
