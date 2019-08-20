@@ -16,6 +16,7 @@ class FoodieSidebar extends React.Component {
           })
   }
 
+<<<<<<< HEAD
 //   componentDidMount(){
 //     fetch(`http://localhost:3000/getFavRestaurants/${localStorage.restaurant_id}`,{
 //         method:"POST",
@@ -39,6 +40,9 @@ class FoodieSidebar extends React.Component {
 // }
 
 handleClick = (id) => {
+=======
+handleClick=(id)=>{
+>>>>>>> 4cc79f1ed913e5fbe48ad0e843d94db6c75084a2
   localStorage.restaurant_id = id
   this.props.history.push("/show")
 }
@@ -46,7 +50,7 @@ handleClick = (id) => {
   render(){
       console.log(this.state.likedRestaurants)
       let allLikedRestaurants = this.state.likedRestaurants.map((restaurant)=>{
-          return <li onClick={ () => this.handleClick(restaurant.id) } >{ restaurant.name } </li>
+          return <li onClick={ () => this.handleClick(restaurant.real_id) } >{ restaurant.name } </li>
       })
 
       //handleClick => needs to take in restaurant object
