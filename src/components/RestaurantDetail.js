@@ -53,7 +53,7 @@ export default class RestaurantDetail extends React.Component{
           .then((data)=>{
               console.log(data)
               this.setState({
-                  comments:data
+                comments:data
               })
           })
     }
@@ -98,7 +98,7 @@ export default class RestaurantDetail extends React.Component{
           .then(resp=>(resp.json()))
           .then((data)=>{
 
-            if (this.state.comments.length>0){
+            if (this.state.comments.length > 0){
               this.setState({
                   comments:[...this.state.comments,data]
               })
@@ -131,6 +131,7 @@ export default class RestaurantDetail extends React.Component{
         return(
             <React.Fragment>
                 <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
+                <div className="restaurant-detail">
                 <img alt={ this.state.restaurant.name } className="restaurant-detail-image" src={ this.state.restaurant.image_url } />
                 <h4>{ name }</h4>
                 <p>Address: { displayAddress }</p>
@@ -148,6 +149,7 @@ export default class RestaurantDetail extends React.Component{
                 <br></br>
                 <input type="submit" onClick={this.handleCommentSubmit} />
                 <Map coordinates={this.state.restaurant.coordinates}/>
+                </div>
             </React.Fragment>
         )
     }
