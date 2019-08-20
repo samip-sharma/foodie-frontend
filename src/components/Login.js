@@ -29,6 +29,7 @@ export default class Login extends React.Component{
         .then((data)=>{
             if (!data.errors){
                 localStorage.user_id=data.user_id
+                localStorage.clickedUser = data.user_id
                 localStorage.token=data.token
                 this.props.onLogin(this.state)
                 this.props.history.push("/home")

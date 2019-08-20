@@ -7,6 +7,7 @@ import Home from './components/Home'
 import RestaurantDetail from './components/RestaurantDetail'
 import Friendlist from './components/Friendlist'
 import Register from './components/Register'
+import Profile from './components/Profile'
 
 
 
@@ -16,8 +17,8 @@ class App extends React.Component {
     name:'',
     user_name:'',
     searchTerm:'',
-    AllRestaurant:[],
-    detailRestaurant:{},
+    AllRestaurant: [],
+    detailRestaurant: {},
     xcoordinate:40.700862,
     ycoordinate:-73.987472
   }
@@ -82,6 +83,7 @@ class App extends React.Component {
         <Route path='/register' render={(routerProps)=> <Register {...routerProps} />} />
         <Route path='/friendlist' render={(routerProps)=> <Friendlist {...routerProps}/>} />
         <Route path='/show' render={(routerProps)=><RestaurantDetail detailRestaurant={this.state.detailRestaurant} handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps}/>} />
+        <Route path='/profile' render={(routerProps) => <Profile handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps} />} />
       </Switch>
     )
   }
