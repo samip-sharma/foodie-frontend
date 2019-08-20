@@ -38,7 +38,7 @@ class FoodieSidebar extends React.Component {
 //     })  
 // }
 
-handleClick=(id)=>{
+handleClick = (id) => {
   localStorage.restaurant_id = id
   this.props.history.push("/show")
 }
