@@ -2,6 +2,7 @@ import React from 'react'
 import FoodieNavbar from './FoodieNavbar'
 import RestaurantComments from './RestaurantComments'
 import Map from './Map'
+import UsersThatLikedRestaurant from './UsersThatLikedRestaurant'
 
 
 export default class RestaurantDetail extends React.Component{
@@ -51,7 +52,7 @@ export default class RestaurantDetail extends React.Component{
           })
           .then(resp=>resp.json())
           .then((data)=>{
-              console.log(data)
+            //   console.log(data)
               this.setState({
                 comments:data
               })
@@ -142,6 +143,7 @@ export default class RestaurantDetail extends React.Component{
                 <button onClick={ this.handleLike } >{this.state.liked? "Unfav" : "fav"}</button>
                 <br></br>
                 <br></br>
+                <UsersThatLikedRestaurant />
                 <RestaurantComments comments={this.state.comments}/>
                 <label>Add a Review: </label>
                 <br></br>
