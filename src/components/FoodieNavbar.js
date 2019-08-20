@@ -21,8 +21,17 @@ class FoodieNavbar extends React.Component {
         "") this.props.handleSearchRestaurant(this.state.searchTerm)
     }
 
-    handleFriendlistClick=()=>{
+    handleFriendlistClick = () => {
         this.props.history.push("/friendlist")
+    }
+
+    handleProfileClick = () => {
+        this.props.history.push("/profile")
+    }
+
+    handleLogout = () => {
+        localStorage.clear()
+        this.props.history.push("/")
     }
     
     render() {
@@ -33,7 +42,8 @@ class FoodieNavbar extends React.Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link onClick={this.handleFriendlistClick} href="#home">Friendlist</Nav.Link>
+                            <Nav.Link onClick={ this.handleProfileClick } href="#home">My Profile</Nav.Link>
+                            <Nav.Link onClick={ this.handleFriendlistClick } href="#home">Friendlist</Nav.Link>
                             <Nav.Link href="#link">Link</Nav.Link>
                             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -44,6 +54,7 @@ class FoodieNavbar extends React.Component {
                             </NavDropdown>
                             </Nav>
                             <Form  inline>
+                            <button onClick={ this.handleLogout }>Logout</button>
                             <FormControl type="text" onChange={this.handleSearchInput} value={this.state.searchTerm}  placeholder="Search" className="mr-sm-2" />
                             <button onClick={this.handleSearchSubmit} >Search</button>
                             </Form>
