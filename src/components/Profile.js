@@ -35,6 +35,9 @@ class Profile extends React.Component {
           console.log(localStorage.clickedUser)
           console.log(localStorage.user_id)
 
+          fetch(`http://localhost:3000/users/${localStorage.user_id}/addFriend/${localStorage.clickedUser}`)
+          .then(resp=>resp.json)
+          .then(console.log)
 
       }
 
