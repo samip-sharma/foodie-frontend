@@ -39,14 +39,18 @@ export default class Register extends React.Component{
 
     render(){
         return(
-            <React.Fragment >
+            <div className="register-page">
+                <h2>Create an Account</h2>
                 <form onSubmit={ this.handleSubmit }>
                 <input onChange={ this.handleInputChange } value={ this.state.name } type="text" placeholder="name" name="name"/>
+                <br></br>
                 <input onChange={ this.handleInputChange } value={ this.state.user_name } type="text" placeholder="user name" name="user_name"/>
+                <br></br>
                 <input onChange={ this.handleInputChange } value={ this.state.password }  type="password" placeholder="password" name="password"/>
+                <br></br>
                 <input type="submit" value="submit"/>
                 </form>
-            </React.Fragment>
+            </div>
         )
 
     }

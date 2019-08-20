@@ -64,9 +64,9 @@ class App extends React.Component {
       )
     })
     .then(resp=>resp.json())
-    .then((data)=>{
+    .then((data) => {
       this.setState({
-        AllRestaurant:data.businesses
+        AllRestaurant: data.businesses
       })
     })
   }

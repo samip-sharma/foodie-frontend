@@ -2,9 +2,10 @@ import React from 'react'
 
 
 export default class Login extends React.Component{
+    
     state={
         user_name:'',
-        password:'',
+        password:''
     }
 
 
@@ -36,19 +37,26 @@ export default class Login extends React.Component{
         
     }
 
+    handleRegisterClick = () => {
+        this.props.history.push("/register")
+    }
+
     render(){
         if(localStorage.token){
             this.props.history.push("/home") 
         }
 
         return(
-            <React.Fragment >
-                <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleInputChange} value={this.state.user_name} type="text" placeholder="user name" name="user_name"/>
-                <input onChange={this.handleInputChange} value={this.state.password}  type="password" placeholder="password" name="password"/>
+            <div className="login-page">
+                <form onSubmit={ this.handleSubmit }>
+                <input onChange={ this.handleInputChange } value={ this.state.user_name } type="text" placeholder="user name" name="user_name"/>
+                <input onChange={ this.handleInputChange } value={ this.state.password }  type="password" placeholder="password" name="password"/>
+                <br></br>
                 <input type="submit" value="submit"/>
                 </form>
-            </React.Fragment>
+                <br></br>
+                <button onClick={ this.handleRegisterClick }>Register</button>
+            </div>
         )
 
     }

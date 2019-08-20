@@ -2,6 +2,8 @@ import React from 'react'
 import RestaurantInHome from './ResturantInHome'
 import FoodieNavbar from './FoodieNavbar'
 import FoodieSidebar from './FoodieSidebar';
+import GoogleMapReact from 'google-map-react';
+
 
 
 
@@ -20,7 +22,7 @@ export default class Home extends React.Component{
             <React.Fragment>
             <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
                 {localStorage.token ? arr : "Dont be too smart"}
-            <FoodieSidebar />
+            <FoodieSidebar history = {this.props.history} />
             </React.Fragment>
         )
     }

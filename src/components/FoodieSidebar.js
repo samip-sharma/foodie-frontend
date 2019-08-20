@@ -6,7 +6,7 @@ class FoodieSidebar extends React.Component {
     likedRestaurants: []
   };
 
-  componentDidMount(){
+  componentDidMount() {
       fetch(`http://localhost:3000/getFavRestaurants/${localStorage.user_id}`)
       .then(resp => resp.json())
       .then((data) => {
@@ -38,11 +38,18 @@ class FoodieSidebar extends React.Component {
 //     })  
 // }
 
+handleClick=(id)=>{
+  localStorage.restaurant_id = id
+  this.props.history.push("/show")
+}
+
   render(){
       console.log(this.state.likedRestaurants)
       let allLikedRestaurants = this.state.likedRestaurants.map((restaurant)=>{
-          return <li>{ restaurant.name }</li>
+          return <li onClick={ () => this.handleClick(restaurant.id) } >{ restaurant.name } </li>
       })
+
+      //handleClick => needs to take in restaurant object
 
       return(
           <div className="side-bar">
