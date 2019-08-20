@@ -14,7 +14,6 @@ class SimpleMap extends Component {
   };
  
   render() {
-    //   console.log(this.props)
       let coo
       if(this.props.coordinates){
         coo={
@@ -22,8 +21,7 @@ class SimpleMap extends Component {
             lng:this.props.coordinates.longitude
         }
     }
-    console.log(coo)
-    //   console.log(this.props.coordinates)
+
     return (
       // Important! Always set the container height explicitly
       <div className="each-map" style={{ height: '300px', width: '300px' }}>

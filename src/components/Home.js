@@ -2,7 +2,6 @@ import React from 'react'
 import RestaurantInHome from './ResturantInHome'
 import FoodieNavbar from './FoodieNavbar'
 import FoodieSidebar from './FoodieSidebar';
-import GoogleMapReact from 'google-map-react';
 
 
 
