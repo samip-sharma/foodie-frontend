@@ -25,12 +25,12 @@ class Profile extends React.Component {
             )
     }
 
-    handleClick=(id)=>{
+    handleClick = (id) => {
         localStorage.restaurant_id = id
         this.props.history.push("/show")
       }
 
-      handleAddFriend=()=>{
+      handleAddFriend = () => {
         //   debugger
           console.log(localStorage.clickedUser)
           console.log(localStorage.user_id)
