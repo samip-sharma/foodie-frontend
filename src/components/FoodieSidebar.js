@@ -16,28 +16,6 @@ class FoodieSidebar extends React.Component {
           })
   }
 
-//   componentDidMount(){
-//     fetch(`http://localhost:3000/getFavRestaurants/${localStorage.restaurant_id}`,{
-//         method:"POST",
-//         headers:{
-//         "Content-Type":"application/json",
-//         "Accepts":"application/json",
-//         "Authorization":localStorage.token
-//         },
-//         body:JSON.stringify(
-//         {user_id: localStorage.user_id,
-//         Authorization: localStorage.token}
-//         )
-//       })
-//     .then(response => response.json())
-//     .then((data) => {
-//         console.log(data)
-//         this.setState({
-//             likedRestaurants: {...data}
-//         })
-//     })  
-// }
-
 handleClick=(id)=>{
   localStorage.restaurant_id = id
   this.props.history.push("/show")
@@ -46,7 +24,7 @@ handleClick=(id)=>{
   render(){
       console.log(this.state.likedRestaurants)
       let allLikedRestaurants = this.state.likedRestaurants.map((restaurant)=>{
-          return <li onClick={ () => this.handleClick(restaurant.id) } >{ restaurant.name } </li>
+          return <li onClick={ () => this.handleClick(restaurant.real_id) } >{ restaurant.name } </li>
       })
 
       //handleClick => needs to take in restaurant object
