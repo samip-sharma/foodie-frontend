@@ -9,7 +9,11 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3000/users/${localStorage.clickedUser}`, {
+        this.fetchUserFromBackend()
+    }
+
+    fetchUserFromBackend=()=>{
+        fetch(`http://localhost:3000/users/${localStorage.user_id}/${localStorage.clickedUser}`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -19,9 +23,11 @@ class Profile extends React.Component {
         }
         )
             .then(resp => resp.json())
-            .then(data => this.setState({
+            .then(data => {
+                console.log(data)
+                this.setState({   
                 user: data
-            })
+            })}
             )
     }
 
@@ -42,7 +48,6 @@ class Profile extends React.Component {
       }
 
     render() {
-        
         let userRestaurants;
         if (this.state.user.restaurants) {
             userRestaurants = this.state.user.restaurants.map((restaurant) => <li onClick={ () => this.handleClick(restaurant.real_id) }> {restaurant.name} </li>)
@@ -60,7 +65,6 @@ class Profile extends React.Component {
                         <button onClick={this.handleAddFriend} >Add Friend</button>
                         }
                     <ul>Liked Restaurants: { userRestaurants }</ul>
-                    <Friendlist />
                 </div>
             </React.Fragment>
         )

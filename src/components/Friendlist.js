@@ -6,6 +6,10 @@ export default class Friendlist extends React.Component{
         friendList:[]
     }
 
+    handleCLick=()=>{
+        
+    }
+
     componentDidMount(){
         fetch(`http://localhost:3000/following/${localStorage.user_id}`,
         )
@@ -19,10 +23,12 @@ export default class Friendlist extends React.Component{
     render(){
         console.log(this.state.friendList[0])
         let arr=this.state.friendList.map((friend)=>{
-            return <li>{friend.name}</li>
+
+            return <li onClick={this.handleClick}>{friend.name}</li>
         })
         return(
             <React.Fragment>
+                <div>My friends</div>
                 {arr}
             </React.Fragment>
         )

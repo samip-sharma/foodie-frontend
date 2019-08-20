@@ -31,8 +31,8 @@ class FoodieNavbar extends React.Component {
     }
 
     handleProfileClick = () => {
-        this.props.history.push("/profile")
         localStorage.clickedUser = localStorage.user_id
+        this.props.history.push("/profile")
     }
 
     handleLogout = () => {
