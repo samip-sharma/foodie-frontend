@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
  
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div onClick={ (e) => console.log(e.target)} >{text}</div>;
  
 class SimpleMap extends Component {
   static defaultProps = {
@@ -31,9 +31,14 @@ class SimpleMap extends Component {
                 defaultCenter={coo}
                 defaultZoom={this.props.zoom}
                 >
-                <AnyReactComponent  
+                <AnyReactComponent
                     lat={coo.lat}
                     lng={coo.lng}
+                    text="📍"
+                />
+                <AnyReactComponent 
+                    lat={coo.lat + 0.1}
+                    lng={coo.lng + 0.1}
                     text="📍"
                 />
                 </GoogleMapReact>
