@@ -11,7 +11,8 @@ export default class RestaurantDetail extends React.Component{
         restaurant:[],
         liked:false,
         commentText:'',
-        comments:[]
+        comments:[],
+        usersLiked:[]
     }
 
     componentDidMount(){
@@ -35,6 +36,7 @@ export default class RestaurantDetail extends React.Component{
             })
         })  
 
+        this.handleUsersLikeList()
 
 
         fetch("http://localhost:3000/getComments",{
@@ -59,8 +61,28 @@ export default class RestaurantDetail extends React.Component{
           })
     }
 
+
+    handleUsersLikeList=()=>{
+
+        fetch(`http://localhost:3000/restaurants/${localStorage.restaurant_id}/users`,{
+            method:'GET',
+            headers:{
+                "Accepts":"Application/json",
+                'Content-Type':"application/json",
+                "Authorization":localStorage.token
+            }
+        })
+        .then(resp=>resp.json())
+        .then((data)=>{
+            this.setState({
+                usersLiked:data
+            })
+        })
+
+    }
+
     handleLike=()=>{
-        console.log("like")
+        
         fetch(`http://localhost:3000/addlike`,{
             method:"POST",
             headers:{
@@ -74,6 +96,7 @@ export default class RestaurantDetail extends React.Component{
             restaurant_name:this.state.restaurant.name}
             )
         }).then(()=>{
+            this.handleUsersLikeList()
             this.setState({
                 liked:!this.state.liked
             })
@@ -143,7 +166,7 @@ export default class RestaurantDetail extends React.Component{
                 <button onClick={ this.handleLike } >{this.state.liked? "Unfav" : "fav"}</button>
                 <br></br>
                 <br></br>
-                <UsersThatLikedRestaurant />
+                <UsersThatLikedRestaurant history={this.props.history} usersLiked={this.state.usersLiked}/>
                 <RestaurantComments comments={this.state.comments}/>
                 <label>Add a Review: </label>
                 <br></br>

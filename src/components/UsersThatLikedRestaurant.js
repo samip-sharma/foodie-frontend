@@ -2,22 +2,19 @@ import React from  'react'
 
 export default class UsersThatLikedRestaurant extends React.Component{
 
-    componentDidMount(){
-        fetch(`http://localhost:3000/restaurants/${localStorage.restaurant_id}/users`,{
-            method:'GET',
-            headers:{
-                "Accepts":"Application/json",
-                'Content-Type':"application/json",
-                "Authorization":localStorage.token
-            }
-        })
-        .then(resp=>resp.json())
-        .then(console.log)
-    }
 
-    render (){
+    render () {
+        let arr
+        if (this.props.usersLiked.length>0){
+         arr=this.props.usersLiked.map((user)=>{
+            return <span onClick={(e)=>{
+                localStorage.clickedUser=user.id 
+                this.props.history.push("/profile")
+            }}>{user.name},</span>
+         }
+         )}
         return(
-            <div>users</div>
+            <div>who liked this restaurant:{arr}</div>
         )
     }
 }
