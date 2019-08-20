@@ -5,9 +5,9 @@ export default class UsersThatLikedRestaurant extends React.Component{
 
     render () {
         let arr
-        if (this.props.usersLiked.length>0){
+        if (this.props.usersLiked){
+            console.log(this.props.usersLiked)
          arr=this.props.usersLiked.map((user)=>{
-             console.log(user)
             return <span onClick={()=>{
                 localStorage.clickedUser=user.id 
                 this.props.history.push("/profile")

@@ -74,9 +74,12 @@ export default class RestaurantDetail extends React.Component{
         })
         .then(resp=>resp.json())
         .then((data)=>{
+            if(!data.error){
+
             this.setState({
                 usersLiked:data
             })
+            }
         })
 
     }
