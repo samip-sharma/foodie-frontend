@@ -21,6 +21,11 @@ class FoodieNavbar extends React.Component {
         "") this.props.handleSearchRestaurant(this.state.searchTerm)
     }
 
+    handleHomeButton = () => {
+        this.props.history.push("/home")
+        this.props.handleSearchRestaurant("food")
+    }
+
     handleFriendlistClick = () => {
         this.props.history.push("/friendlist")
     }
@@ -38,7 +43,7 @@ class FoodieNavbar extends React.Component {
         return(
             <div className="navbar-container">
                 <Navbar bg="light" expand="lg">
-                    <Link to="/home">Foodie</Link>
+                    <Nav.Link onClick={ this.handleHomeButton }>Foodie</Nav.Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

@@ -132,6 +132,9 @@ export default class RestaurantDetail extends React.Component{
                 }) 
             }
           })
+          this.setState({
+              commentText: ''
+          })
     }
 
     handleCommentTypeChange=(e)=>{
