@@ -24,6 +24,7 @@ class FoodieNavbar extends React.Component {
     handleFriendlistClick=()=>{
         this.props.history.push("/friendlist")
     }
+    
     render() {
         return(
             <div className="navbar-container">
