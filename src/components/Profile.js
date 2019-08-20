@@ -30,6 +30,14 @@ class Profile extends React.Component {
         this.props.history.push("/show")
       }
 
+      handleAddFriend=()=>{
+        //   debugger
+          console.log(localStorage.clickedUser)
+          console.log(localStorage.user_id)
+
+
+      }
+
     render() {
         
         let userRestaurants;
@@ -43,6 +51,11 @@ class Profile extends React.Component {
                 <div className="profile-page">
                     <h1>{ this.state.user.name }</h1>
                     <br></br>
+                    {localStorage.clickedUser===localStorage.user_id?
+                        null
+                        :
+                        <button onClick={this.handleAddFriend} >Add Friend</button>
+                        }
                     <ul>Liked Restaurants: { userRestaurants }</ul>
                     <Friendlist />
                 </div>
