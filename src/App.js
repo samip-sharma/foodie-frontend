@@ -40,6 +40,8 @@ class App extends React.Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
+          localStorage.xcoo=position.coords.latitude
+          localStorage.ycoo=position.coords.longitude
           this.setState((prevState)=>({
             xcoordinate:position.coords.latitude,
             ycoordinate:position.coords.longitude
@@ -79,7 +81,17 @@ class App extends React.Component {
     return (
       <Switch>
         <Route exact path='/' render={(routerProps)=> <Login  {...routerProps} onLogin={this.onLogin} />} />
-        <Route path='/home' render={(routerProps)=> <Home {...routerProps} handleSearchRestaurant={this.handleSearchRestaurant} AllRestaurant={this.state.AllRestaurant}/>} />
+
+        <Route path='/home'
+         render={(routerProps)=> <Home coordinates={{
+        lat:this.state.xcoordinate,
+        lng:this.state.ycoordinate
+        }}
+         {...routerProps}
+          handleSearchRestaurant={this.handleSearchRestaurant} 
+          AllRestaurant={this.state.AllRestaurant}/>} 
+          />
+          
         <Route path='/register' render={(routerProps)=> <Register {...routerProps} />} />
         <Route path='/friendlist' render={(routerProps)=> <Friendlist {...routerProps}/>} />
         <Route path='/show' render={(routerProps)=><RestaurantDetail detailRestaurant={this.state.detailRestaurant} handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps}/>} />

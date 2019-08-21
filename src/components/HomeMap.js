@@ -8,23 +8,17 @@ const Marker = ({ text,restaurant_id, history }) => <div  onClick={ (e) =>
     }} >{text}</div>;
  
 class HomeMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 17
-  };
  
   render() {
       let coo
-      if(this.props.AllRestaurant){
+      if(this.props.AllRestaurant && this.props.coordinates){
+        console.log(localStorage.xcoo)
+        console.log(localStorage.ycoo)
         coo={
             lat:40.700862,
             lng:-73.987472
         }
     }
-    console.log(this.props.AllRestaurant)
     let allCoordinates = this.props.AllRestaurant.map((restaurant) => {
         return <Marker
         lat={restaurant.coordinates.latitude}
@@ -41,8 +35,8 @@ class HomeMap extends Component {
           {  coo?
                 <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
-                defaultCenter={coo}
-                defaultZoom={this.props.zoom}
+                defaultCenter={this.props.coordinates}
+                defaultZoom={17}
                 >
              {allCoordinates}
             
