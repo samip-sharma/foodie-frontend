@@ -5,6 +5,7 @@ export default class RestaurantComments extends React.Component{
 
     render(){
         let arr
+        console.log(this.props.comments)
         if(this.props.comments.length>0){
              arr=this.props.comments.map((comment)=>{
                 return <p> <span> {comment.user.name}: </span> {comment.context}</p>
@@ -12,7 +13,7 @@ export default class RestaurantComments extends React.Component{
         }
         return(
             <div className="restaurant-comments">
-                Comments for this Restaurant
+                Comments for this Restaurant:
                 {arr}
             </div>
         )
