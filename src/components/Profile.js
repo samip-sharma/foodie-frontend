@@ -102,6 +102,7 @@ class Profile extends React.Component {
         }
 
         let boolean=((localStorage.clickedUser!==localStorage.user_id) && (this.state.friends===false))
+        let addOrRemoveBoolean=(this.state.friends===true && (localStorage.clickedUser!==localStorage.user_id))
         //will always be false^ 
 
         return(
@@ -113,8 +114,9 @@ class Profile extends React.Component {
                     {(boolean)?
                         <button onClick={this.handleAddFriend} >Add Friend</button>
                         :
-                        <button onClick={this.handleDeleteFriend}>Remove Friend</button>
+                        null
                     }
+                    {addOrRemoveBoolean? <button onClick={this.handleDeleteFriend}>Remove Friend</button>:null}
                     <ul>Liked Restaurants: { userRestaurants }</ul>
                 </div>
             </React.Fragment>
