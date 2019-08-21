@@ -62,7 +62,8 @@ class Profile extends React.Component {
         //   console.log(localStorage.clickedUser)
         //   console.log(localStorage.user_id)
         this.setState({
-            friends: !this.state.friends
+            // friends: !this.state.friends
+            friends: true
         })
 
         fetch(`http://localhost:3000/users/${localStorage.user_id}/addFriend/${localStorage.clickedUser}`)
@@ -71,6 +72,12 @@ class Profile extends React.Component {
     }
 
     handleDeleteFriend = () => {
+        
+        this.setState({
+            // friends: !this.state.friends
+            friends: false
+        })
+        
         fetch(`http://localhost:3000/users/${localStorage.user_id}/deleteFriend/${localStorage.clickedUser}`, {
             method: "DELETE"
         })
@@ -85,7 +92,8 @@ class Profile extends React.Component {
             userRestaurants = this.state.user.restaurants.map((restaurant) => <li onClick={ () => this.handleClick(restaurant.real_id) }> {restaurant.name} </li>)
         }
 
-        let boolean=(localStorage.clickedUser!==localStorage.user_id && !this.state.friends)
+        let boolean=((localStorage.clickedUser!==localStorage.user_id) && (this.state.friends===false))
+        //will always be false^ 
 
         return(
             <React.Fragment>
@@ -97,7 +105,7 @@ class Profile extends React.Component {
                         <button onClick={this.handleAddFriend} >Add Friend</button>
                         :
                         <button onClick={this.handleDeleteFriend}>Remove Friend</button>
-                        }
+                    }
                     <ul>Liked Restaurants: { userRestaurants }</ul>
                 </div>
             </React.Fragment>
