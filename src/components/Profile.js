@@ -26,8 +26,10 @@ class Profile extends React.Component {
         .then(resp=>resp.json())
         .then((data)=>{
             if (data.length>0){
-                if( data.filter((friend)=>friend.id===localStorage.clickedUser) ){
+                if( data.filter((friend)=>parseInt(friend.id)===parseInt(localStorage.clickedUser)).length>0 ){
                     console.log("true")
+                    console.log(data[0].id)
+                    console.log(localStorage.clickedUser)
                     this.setState({
                         friends:true
                     })
