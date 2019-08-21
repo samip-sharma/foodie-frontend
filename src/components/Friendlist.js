@@ -1,13 +1,10 @@
-import React from "react"
+import React from "react";
+import FoodieNavbar from './FoodieNavbar';
 
 export default class Friendlist extends React.Component{
 
     state = {
         friendList:[]
-    }
-
-    handleCLick = () => {
-        
     }
 
     componentDidMount() {
@@ -23,13 +20,19 @@ export default class Friendlist extends React.Component{
     render() {
         console.log(this.state.friendList[0])
         let arr = this.state.friendList.map((friend) => {
-            return <li onClick={ this.handleClick }>{friend.name}</li>
+            return <li onClick={ () => {
+                localStorage.clickedUser = friend.id
+                this.props.history.push("/profile")
+            }}>
+            {friend.name}</li>
         })
         
         return(
             <React.Fragment>
-                <div>My friends</div>
-                {arr}
+                <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history} />
+                <div className="friends-list">My friends
+                    {arr}
+                </div>
             </React.Fragment>
         )
     }
