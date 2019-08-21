@@ -1,12 +1,11 @@
 import React from 'react';
-import Friendlist from './Friendlist';
 import FoodieNavbar from './FoodieNavbar';
 
 class Profile extends React.Component {
 
     state = {
         user: [],
-        friends:false
+        friends: false
     }
 
     componentDidMount() {
@@ -14,7 +13,7 @@ class Profile extends React.Component {
         this.fetchingFriendsList()
     }
 
-    fetchingFriendsList(){
+    fetchingFriendsList() {
         fetch(`http://localhost:3000/following/${localStorage.user_id}`,
         )
         .then(resp=>resp.json())
@@ -33,7 +32,7 @@ class Profile extends React.Component {
             })
     }
 
-    fetchUserFromBackend=()=>{
+    fetchUserFromBackend = () => {
         fetch(`http://localhost:3000/users/${localStorage.user_id}/${localStorage.clickedUser}`, {
             method: "GET",
             headers: {
@@ -55,30 +54,39 @@ class Profile extends React.Component {
     handleClick = (id) => {
         localStorage.restaurant_id = id
         this.props.history.push("/show")
-      }
+    }
 
-      handleAddFriend = () => {
+    handleAddFriend = () => {
         //   debugger
 
         //   console.log(localStorage.clickedUser)
         //   console.log(localStorage.user_id)
+        this.setState({
+            friends: !this.state.friends
+        })
 
-            this.setState({
-                friend:false
-            })
-          fetch(`http://localhost:3000/users/${localStorage.user_id}/addFriend/${localStorage.clickedUser}`)
-          .then(resp=>resp.json)
-          .then(console.log)
+        fetch(`http://localhost:3000/users/${localStorage.user_id}/addFriend/${localStorage.clickedUser}`)
+            .then(resp => resp.json)
+            .then(console.log)
+    }
 
-      }
+    handleDeleteFriend = () => {
+        fetch(`http://localhost:3000/users/${localStorage.user_id}/deleteFriend/${localStorage.clickedUser}`, {
+            method: "DELETE"
+        })
+            .then(resp => resp.json)
+            .then(console.log)
+    }
 
     render() {
+        
         let userRestaurants;
         if (this.state.user.restaurants) {
             userRestaurants = this.state.user.restaurants.map((restaurant) => <li onClick={ () => this.handleClick(restaurant.real_id) }> {restaurant.name} </li>)
         }
 
         let boolean=(localStorage.clickedUser!==localStorage.user_id && !this.state.friends)
+
         return(
             <React.Fragment>
                 <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
@@ -88,7 +96,7 @@ class Profile extends React.Component {
                     {(boolean)?
                         <button onClick={this.handleAddFriend} >Add Friend</button>
                         :
-                        null
+                        <button onClick={this.handleDeleteFriend}>Remove Friend</button>
                         }
                     <ul>Liked Restaurants: { userRestaurants }</ul>
                 </div>
