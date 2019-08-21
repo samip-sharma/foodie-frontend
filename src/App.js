@@ -93,7 +93,7 @@ class App extends React.Component {
           />
           
         <Route path='/register' render={(routerProps)=> <Register {...routerProps} />} />
-        <Route path='/friendlist' render={(routerProps)=> <Friendlist {...routerProps}/>} />
+        <Route path='/friendlist' render={(routerProps)=> <Friendlist handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps}/>} />
         <Route path='/show' render={(routerProps)=><RestaurantDetail detailRestaurant={this.state.detailRestaurant} handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps}/>} />
         <Route path='/profile' render={(routerProps) => <Profile handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps} />} />
       </Switch>
