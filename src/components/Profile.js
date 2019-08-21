@@ -122,7 +122,7 @@ class Profile extends React.Component {
                         null
                     }
                     {addOrRemoveBoolean? <button onClick={this.handleDeleteFriend}>Remove Friend</button>:null}
-                    <ul>Liked Restaurants: { userRestaurants }</ul>
+                    <ul>Liked Restaurants: <div className="liked-restaurants-list">{ userRestaurants }</div></ul>
                 </div>
             </React.Fragment>
         )

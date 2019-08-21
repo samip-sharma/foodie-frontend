@@ -31,12 +31,12 @@ class HomeMap extends Component {
 
     return (
       // Important! Always set the container height explicitly
-      <div className="each-map" style={{ height: '500px', width: '500px' }}>
+      <div className="home-map" style={{ height: '70vh', width: '80vw' }}>
           {  coo?
                 <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
                 defaultCenter={this.props.coordinates}
-                defaultZoom={17}
+                defaultZoom={17.2}
                 >
              {allCoordinates}
             

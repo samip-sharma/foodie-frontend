@@ -43,7 +43,7 @@ class FoodieNavbar extends React.Component {
     render() {
         return(
             <div className="navbar-container">
-                <Navbar bg="light" expand="lg">
+                <Navbar bg="dark" variant="dark" expand="lg">
                     <Nav.Link onClick={ this.handleHomeButton }>Foodie</Nav.Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -60,10 +60,10 @@ class FoodieNavbar extends React.Component {
                             </NavDropdown>
                             <button onClick={ this.handleLogout }>Logout</button>
                             </Nav>
-                            <Form  inline>
+                            <Form onSubmit={this.handleSearchSubmit}  inline>
                             <FormControl type="text" onChange={this.handleSearchInput} value={this.state.searchTerm}  placeholder="Search" className="mr-sm-2" />
+                            <button>Search</button>
                             </Form>
-                            <button onClick={this.handleSearchSubmit} >Search</button>
                     </Navbar.Collapse>
                 </Navbar>
             </div>

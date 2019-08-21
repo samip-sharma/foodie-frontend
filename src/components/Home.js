@@ -23,8 +23,12 @@ export default class Home extends React.Component {
         return(
             <React.Fragment>
             <FoodieNavbar handleSearchRestaurant={ this.props.handleSearchRestaurant } history={ this.props.history }/>
-                <HomeMap coordinates={this.props.coordinates} AllRestaurant={ this.props.AllRestaurant } history = { this.props.history }/>
-                {localStorage.token ? arr : "Dont be too smart"}
+                <div className="home-container">
+                    <HomeMap coordinates={this.props.coordinates} AllRestaurant={ this.props.AllRestaurant } history = { this.props.history }/>
+                    <div className="home-images">
+                    {localStorage.token ? arr : "Dont be too smart"}
+                    </div>
+                </div>
             <FoodieSidebar history = { this.props.history } />
             </React.Fragment>
         )

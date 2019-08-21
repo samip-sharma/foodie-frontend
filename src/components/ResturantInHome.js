@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 
 
 export default class RestaurantInHome extends React.Component{
@@ -11,9 +10,10 @@ export default class RestaurantInHome extends React.Component{
 
     render(){
         return(
-            <span>
+            <div className="home-each-image">
                 <img alt={ this.props.restaurant.name } onClick={() => this.handleClick(this.props.restaurant.id)} className={"each-home-image"} src={this.props.restaurant.image_url} />
-            </span>
+                <div className="image-caption">{this.props.restaurant.name.slice(0,20)}</div>
+            </div>
         )
     }
 }

@@ -37,9 +37,10 @@ code {
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   right: 0;
-  background-color:rgb(94, 73, 73); /* Black */
+  background-color:#ff330081; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 70px;
+  color:white;
 }
 
 
@@ -77,6 +78,34 @@ code {
   border: double black
 }
 
+.home-images{
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+white-space: nowrap;
+max-width: 90vw;
+min-width: 100vh;
+margin-right: 200px;
+margin-left: 100px;
+}
+
+.home-images img{
+  margin-left: 5px;
+}
+
+
+
+.home-container{
+  background-image: url(./image/abc.png);
+  /* background: rgb(230, 80, 80); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  padding-top: 50px;
+  display: flex;
+  height:100vh;
+  flex-direction: column;
+}
+
 li {
   list-style-type: none;
   padding-bottom: 10px;
@@ -84,5 +113,44 @@ li {
 }
 
 li:hover {
-  background-color: purple;
+  background-color: rgb(128, 4, 0);
+}
+
+.liked-restaurants-list {
+  border: double black;
+}
+
+
+.home-map{
+  padding-left: 250px;
+  padding-bottom:20px;
+  padding-top: 20px;
+}
+
+.home-each-image{
+  position: relative;
+  display: inline-block;
+}
+
+.each-home-image:hover{
+  opacity: 0.8;
+  zoom: 1.1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
+  cursor: pointer;
+}
+.home-each-image .image-caption{
+  width:190px;
+  align-self: center;
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 10px;
+  border: solid 2px;
+  background: grey;
+  /* right: 0; */
+  top: 0; /* Adjust this value to move the positioned div up and down */
+  text-align: center;
+  color: white;
+  /* width: 200px; Set the width of the positioned div */
 }
