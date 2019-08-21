@@ -58,12 +58,12 @@ class FoodieNavbar extends React.Component {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>
+                            <button onClick={ this.handleLogout }>Logout</button>
                             </Nav>
                             <Form  inline>
-                            <button onClick={ this.handleLogout }>Logout</button>
                             <FormControl type="text" onChange={this.handleSearchInput} value={this.state.searchTerm}  placeholder="Search" className="mr-sm-2" />
-                            <button onClick={this.handleSearchSubmit} >Search</button>
                             </Form>
+                            <button onClick={this.handleSearchSubmit} >Search</button>
                     </Navbar.Collapse>
                 </Navbar>
             </div>
