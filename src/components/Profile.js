@@ -5,12 +5,19 @@ class Profile extends React.Component {
 
     state = {
         user: [],
-        friends: false
+        friends: false,
+        current_id:null
     }
 
     componentDidMount() {
         this.fetchUserFromBackend()
         this.fetchingFriendsList()
+    }
+
+    componentDidUpdate(){
+        if (parseInt(this.state.current_id )!== parseInt(localStorage.clickedUser)){
+            this.componentDidMount()
+        }
     }
 
     fetchingFriendsList() {
@@ -44,9 +51,11 @@ class Profile extends React.Component {
         )
             .then(resp => resp.json())
             .then(data => {
+                console.log(localStorage.clickedUser)
                 console.log(data)
                 this.setState({   
-                user: data
+                user: data,
+                current_id:data.id
             })}
             )
     }
