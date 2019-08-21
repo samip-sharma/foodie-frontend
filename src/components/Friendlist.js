@@ -2,15 +2,15 @@ import React from "react"
 
 export default class Friendlist extends React.Component{
 
-    state={
+    state = {
         friendList:[]
     }
 
-    handleCLick=()=>{
+    handleCLick = () => {
         
     }
 
-    componentDidMount(){
+    componentDidMount() {
         fetch(`http://localhost:3000/following/${localStorage.user_id}`,
         )
         .then(resp=>resp.json())
@@ -20,12 +20,12 @@ export default class Friendlist extends React.Component{
                 })
             })
     }
-    render(){
+    render() {
         console.log(this.state.friendList[0])
-        let arr=this.state.friendList.map((friend)=>{
-
-            return <li onClick={this.handleClick}>{friend.name}</li>
+        let arr = this.state.friendList.map((friend) => {
+            return <li onClick={ this.handleClick }>{friend.name}</li>
         })
+        
         return(
             <React.Fragment>
                 <div>My friends</div>
