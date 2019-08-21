@@ -11,7 +11,8 @@ export default class RestaurantComments extends React.Component{
             })
         }
         return(
-            <div>
+            <div className="restaurant-comments">
+                Comments for this Restaurant
                 {arr}
             </div>
         )
