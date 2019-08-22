@@ -12,6 +12,7 @@ import Profile from './components/Profile'
 
 
 class App extends React.Component {
+  
   state={
     name:'',
     user_name:'',
@@ -49,7 +50,7 @@ class App extends React.Component {
         }
       )
     } else {
-       console.log("error")
+      console.log("error")
     }
   }
 

@@ -16,18 +16,17 @@ class FoodieSidebar extends React.Component {
           })
   }
 
-handleClick=(id)=>{
+handleClick = (id) => {
   localStorage.restaurant_id = id
   this.props.history.push("/show")
 }
 
-  render(){
-      console.log(this.state.likedRestaurants)
-      let allLikedRestaurants
-      if(this.state.likedRestaurants.length>0){
+  render() {
+      let allLikedRestaurants;
+      if(this.state.likedRestaurants.length > 0){
             allLikedRestaurants = this.state.likedRestaurants.map((restaurant)=>{
-          return <li onClick={ () => this.handleClick(restaurant.real_id) } >{ restaurant.name } </li>
-        })
+              return <li onClick={ () => this.handleClick(restaurant.real_id) } >{ restaurant.name } </li>
+            })
       }
 
       //handleClick => needs to take in restaurant object
