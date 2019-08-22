@@ -41,6 +41,11 @@ code {
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 70px;
   color:white;
+  text-align: center;
+}
+
+.side-bar h4 {
+  text-decoration: underline;
 }
 
 
@@ -55,10 +60,22 @@ code {
 
 .login-page {
   text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  padding-top: 10%;
+  background-size: cover;
+  height: 100vh;
 }
 
 .register-page {
   text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  padding-top: 10%;
+  background-size: cover;
+  height: 100vh;
+}
+
+.register-page h2, h3  {
+  color:yellow;
 }
 
 .restaurant-detail {
@@ -86,6 +103,9 @@ code {
 .profile-image {
   border:solid;
   border-color: white;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
 }
 
 .liked-restaurants-list {
@@ -95,8 +115,16 @@ code {
   color:yellow;
 }
 
-.friends-list {
-  padding-top: 70px;
+.friend-list {
+  background-image: url("https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  background-size: cover;
+  height: 100vh;
+}
+
+.friend-list-content {
+  padding-top: 100px;
+  text-align: center;
+  color:yellow;
 }
 
 .restaurant-comments {
@@ -139,6 +167,7 @@ li {
 
 li:hover {
   background-color: rgb(128, 4, 0);
+  zoom: 1.5;
 }
 
 .home-map{
