@@ -154,6 +154,12 @@ export default class RestaurantDetail extends React.Component{
         })
     }
 
+    handleNewlikeCLick=(e)=>{
+        debugger
+        console.log(e.target.className)
+        // e.target.classList<< "animate-like"
+    }
+
 
     render(){
         const {name, categories, rating, price, location, display_phone} = this.state.restaurant
@@ -170,24 +176,35 @@ export default class RestaurantDetail extends React.Component{
             <React.Fragment>
                 <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
                 <div className="restaurant-detail">
-                <img alt={ this.state.restaurant.name } className="restaurant-detail-image" src={ this.state.restaurant.image_url } />
-                <h4>{ name }</h4>
-                <p>Address: { displayAddress }</p>
-                <p>Phone: { display_phone } </p>
-                <p>Rating: { rating}</p>
-                <p>{ price }</p>
-                <p>Categories: { displayCategories }</p>
-                <button onClick={ this.handleLike } >{this.state.liked? "Unfav" : "fav"}</button>
-                <br></br>
-                <br></br>
-                <UsersThatLikedRestaurant history={this.props.history} usersLiked={this.state.usersLiked}/>
-                <RestaurantComments handleDeleteComment={this.handleDeleteComment} comments={this.state.comments}/>
-                <label>Add a Review: </label>
-                <br></br>
-                <textarea value={this.state.commentText} onChange={this.handleCommentTypeChange}></textarea>
-                <br></br>
-                <input type="submit" onClick={this.handleCommentSubmit} />
-                <Map coordinates={this.state.restaurant.coordinates}/>
+                    <img alt={ this.state.restaurant.name } className="restaurant-detail-image" src={ this.state.restaurant.image_url } />
+                    <div className="map-and-content">
+                        <div className="restaurant-detail-content">
+                            <h4>{ name }</h4>
+                            <p>Address: { displayAddress }</p>
+                            <p>Phone: { display_phone } </p>
+                            <p>Rating: { rating}</p>
+                            <p>{ price }</p>
+                            <p>Categories: { displayCategories }</p>
+                        </div>
+                            <div><div class="like-content">  
+                                <button onClick={this.handleLike} class="btn-secondary like-review">
+                                    <i class="fa fa-heart" aria-hidden="true"></i> {this.state.liked? "Unlike" : "like"}
+                                </button>
+                            </div></div>
+                        <div className="restaurant-map">
+                            <Map coordinates={this.state.restaurant.coordinates}/>
+                        </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <UsersThatLikedRestaurant history={this.props.history} usersLiked={this.state.usersLiked}/>
+                    <RestaurantComments handleDeleteComment={this.handleDeleteComment} comments={this.state.comments}/>
+                    <label>Add a Review: </label>
+                    <br></br>
+                    <div><textarea value={this.state.commentText} onChange={this.handleCommentTypeChange}></textarea></div>
+                    <br></br>
+                    <div> <input className="comment-submit" type="submit" onClick={this.handleCommentSubmit} />
+</div>
                 </div>
             </React.Fragment>
         )

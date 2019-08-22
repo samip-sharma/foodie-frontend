@@ -24,7 +24,7 @@ class SimpleMap extends Component {
 
     return (
       // Important! Always set the container height explicitly
-      <div className="each-map" style={{ height: '300px', width: '300px' }}>
+      <div className="each-map" style={{ height: '400px', width: '400px' }}>
           {  coo?
                 <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}

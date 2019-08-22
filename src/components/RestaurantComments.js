@@ -13,9 +13,9 @@ export default class RestaurantComments extends React.Component{
         if(this.props.comments.length > 0){
             allComments = this.props.comments.map((comment)=>{
                 return <div><p> <span> {comment.user.name}: </span> {comment.context}
-                <br></br>
+                
                 {parseInt(comment.user.id) === parseInt(localStorage.user_id) ?
-                    <button onClick={()=> this.handleDeleteButton(comment) }>X</button> :
+                    <button className="delete-comment-button" onClick={()=> this.handleDeleteButton(comment) }>x</button> :
                     null
                 }
                 </p>
@@ -23,8 +23,8 @@ export default class RestaurantComments extends React.Component{
             })
         }
         return(
-            <div className="restaurant-comments">
-                Comments for this Restaurant:
+            <div className="restaurant-comments" >
+                <div style={{textDecoration:"underline"}}>Comments for this Restaurant:</div>
                 {allComments}
             </div>
         )
