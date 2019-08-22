@@ -15,6 +15,13 @@ export default class RestaurantDetail extends React.Component{
         usersLiked:[]
     }
 
+    handleDeleteComment = (comment) => {
+        fetch(`http://localhost:3000/deleteComment/${comment.id}`, {
+            method:"DELETE"
+        })
+            .then(()=>this.fetchCommentFromBackend())
+    }
+
     componentDidMount(){
         fetch(`http://localhost:3000/getRestaurantDetail/${localStorage.restaurant_id}`,{
             method:"POST",
@@ -26,7 +33,7 @@ export default class RestaurantDetail extends React.Component{
             body:JSON.stringify(
             {user_id:localStorage.user_id}
             )
-          })
+        })
         .then(response=>response.json())
         .then((data)=> {
             // console.log(data)
@@ -37,8 +44,10 @@ export default class RestaurantDetail extends React.Component{
         })  
 
         this.handleUsersLikeList()
+        this.fetchCommentFromBackend()
+    }
 
-
+    fetchCommentFromBackend=()=>{
         fetch("http://localhost:3000/getComments",{
             method:"POST",
             headers:{
@@ -48,17 +57,16 @@ export default class RestaurantDetail extends React.Component{
             },
             body:JSON.stringify(
             {user_id:localStorage.user_id,
-             restaurant_id:localStorage.restaurant_id
+            restaurant_id:localStorage.restaurant_id
             }
             )
-          })
-          .then(resp=>resp.json())
-          .then((data)=>{
-            //   console.log(data)
-              this.setState({
+        })
+            .then(resp=>resp.json())
+            .then((data)=>{
+            this.setState({
                 comments:data
-              })
-          })
+            })
+        })
     }
 
 
@@ -173,7 +181,7 @@ export default class RestaurantDetail extends React.Component{
                 <br></br>
                 <br></br>
                 <UsersThatLikedRestaurant history={this.props.history} usersLiked={this.state.usersLiked}/>
-                <RestaurantComments comments={this.state.comments}/>
+                <RestaurantComments handleDeleteComment={this.handleDeleteComment} comments={this.state.comments}/>
                 <label>Add a Review: </label>
                 <br></br>
                 <textarea value={this.state.commentText} onChange={this.handleCommentTypeChange}></textarea>
