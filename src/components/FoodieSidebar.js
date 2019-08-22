@@ -34,7 +34,7 @@ handleClick=(id)=>{
 
       return(
           <div className="side-bar">
-            Your Favorite Restaurants
+            <h4>Your Favorite Restaurants</h4>
             <br></br>
             <br></br>
               { allLikedRestaurants }

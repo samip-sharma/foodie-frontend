@@ -71,12 +71,9 @@ class Profile extends React.Component {
     }
 
     handleAddFriend = () => {
-        //   debugger
-
         //   console.log(localStorage.clickedUser)
         //   console.log(localStorage.user_id)
         this.setState({
-            // friends: !this.state.friends
             friends: true
         })
 
@@ -88,7 +85,6 @@ class Profile extends React.Component {
     handleDeleteFriend = () => {
         
         this.setState({
-            // friends: !this.state.friends
             friends: false
         })
         
@@ -108,7 +104,6 @@ class Profile extends React.Component {
 
         let boolean=((localStorage.clickedUser!==localStorage.user_id) && (this.state.friends===false))
         let addOrRemoveBoolean=(this.state.friends===true && (localStorage.clickedUser!==localStorage.user_id))
-        //will always be false^ 
 
         return(
             <div className="profile-page">
@@ -118,12 +113,14 @@ class Profile extends React.Component {
                     <h1 className="profile-name">{ this.state.user.name }</h1>
                     <br></br>
                     <ul><h2 style={{color:"yellow", border:"solid white 2px", background:"red"}}>Liked Restaurants:</h2> <div className="liked-restaurants-list">{ userRestaurants }</div></ul>
+                    <br></br>
                     {(boolean)?
                         <button onClick={this.handleAddFriend} >Add Friend</button>
                         :
                         null
                     }
                     {addOrRemoveBoolean? <button onClick={this.handleDeleteFriend}>Remove Friend</button>:null}
+                    <br></br><br></br><br></br>
                 </div>
             </div>
         )

@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login'
-// import ReturnMap from './components/Map'
 import { Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
 import RestaurantDetail from './components/RestaurantDetail'
@@ -19,20 +18,20 @@ class App extends React.Component {
     searchTerm:'',
     AllRestaurant: [],
     detailRestaurant: {},
-    xcoordinate:40.700862,
-    ycoordinate:-73.987472
+    xcoordinate: 40.700862,
+    ycoordinate: -73.987472
   }
 
-  onLogin=(user_data)=>{
+  onLogin = (user_data) => {
     console.log(user_data)
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getGeoLocation()
-   this.getRestaurantFromYelp()
+    this.getRestaurantFromYelp()
   }
 
-  handleSearchRestaurant=(term)=>{
+  handleSearchRestaurant = (term) => {
     this.getRestaurantFromYelp(term)
   }
 
@@ -54,42 +53,42 @@ class App extends React.Component {
     }
   }
 
-  getRestaurantFromYelp=(term="lunch")=>{
-    fetch(`http://localhost:3000/getRestaurant/${term}`,{
+  getRestaurantFromYelp = (term="food") => {
+    fetch(`http://localhost:3000/getRestaurant/${term}`, {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
         "Accepts":"application/json"
       },
       body:JSON.stringify(
-       { xcoo:this.state.xcoordinate,
+      { xcoo:this.state.xcoordinate,
         ycoo:this.state.ycoordinate}
       )
     })
-    .then(resp=>resp.json())
-    .then((data) => {
-      this.setState({
-        AllRestaurant: data.businesses
-      })
-    })
+      .then(resp=>resp.json())
+      .then((data) => {
+        this.setState({
+          AllRestaurant: data.businesses
+        })
+      }
+    )
   }
 
 
 
-  render(){
-    // console.log(this.state)
+  render() {
     return (
       <Switch>
         <Route exact path='/' render={(routerProps)=> <Login  {...routerProps} onLogin={this.onLogin} />} />
 
         <Route path='/home'
-         render={(routerProps)=> <Home coordinates={{
-        lat:this.state.xcoordinate,
-        lng:this.state.ycoordinate
-        }}
-         {...routerProps}
-          handleSearchRestaurant={this.handleSearchRestaurant} 
-          AllRestaurant={this.state.AllRestaurant}/>} 
+          render={(routerProps) => <Home coordinates={{
+          lat:this.state.xcoordinate,
+          lng:this.state.ycoordinate
+          }}
+          {...routerProps}
+            handleSearchRestaurant={this.handleSearchRestaurant} 
+            AllRestaurant={this.state.AllRestaurant}/>} 
           />
           
         <Route path='/register' render={(routerProps)=> <Register {...routerProps} />} />

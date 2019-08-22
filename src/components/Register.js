@@ -37,19 +37,27 @@ export default class Register extends React.Component{
         
     }
 
+    handleLoginClick = () => {
+        this.props.history.push("/")
+    }
+
     render(){
         return(
             <div className="register-page">
+                <img src="images/foodie-logo.png" />
                 <h2>Create an Account</h2>
                 <form onSubmit={ this.handleSubmit }>
-                <input onChange={ this.handleInputChange } value={ this.state.name } type="text" placeholder="name" name="name"/>
-                <br></br>
-                <input onChange={ this.handleInputChange } value={ this.state.user_name } type="text" placeholder="user name" name="user_name"/>
-                <br></br>
-                <input onChange={ this.handleInputChange } value={ this.state.password }  type="password" placeholder="password" name="password"/>
-                <br></br>
+                <input onChange={ this.handleInputChange } value={ this.state.name } type="text" placeholder="Name" name="name"/>
+                <br></br><br></br>
+                <input onChange={ this.handleInputChange } value={ this.state.user_name } type="text" placeholder="User Name" name="user_name"/>
+                <br></br><br></br>
+                <input onChange={ this.handleInputChange } value={ this.state.password }  type="password" placeholder="Password" name="password"/>
+                <br></br><br></br>
                 <input type="submit" value="submit"/>
                 </form>
+                <br></br>
+                <h3>Already Have an Account?</h3>
+                <button onClick={ this.handleLoginClick }>Login</button>
             </div>
         )
 

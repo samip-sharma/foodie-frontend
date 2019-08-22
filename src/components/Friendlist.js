@@ -10,16 +10,16 @@ export default class Friendlist extends React.Component{
     componentDidMount() {
         fetch(`http://localhost:3000/following/${localStorage.user_id}`,
         )
-        .then(resp=>resp.json())
-        .then((data)=>{
+        .then(resp => resp.json())
+        .then((data) => {
                 this.setState({
                     friendList:data
                 })
             })
     }
+
     render() {
-        console.log(this.state.friendList[0])
-        let arr = this.state.friendList.map((friend) => {
+        let myFriends = this.state.friendList.map((friend) => {
             return <li onClick={ () => {
                 localStorage.clickedUser = friend.id
                 this.props.history.push("/profile")
@@ -28,12 +28,13 @@ export default class Friendlist extends React.Component{
         })
         
         return(
-            <React.Fragment>
+            <div className="friend-list">
                 <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history} />
-                <div className="friends-list">My friends
-                    {arr}
+                <div className="friend-list-content">
+                    <h2 style={{textDecoration:"underline"}}>My friends</h2>
+                    { myFriends }
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 }
