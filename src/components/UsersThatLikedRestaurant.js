@@ -7,15 +7,17 @@ export default class UsersThatLikedRestaurant extends React.Component{
         let arr
         if (this.props.usersLiked){
             console.log(this.props.usersLiked)
-         arr=this.props.usersLiked.map((user)=>{
-            return <span onClick={()=>{
-                localStorage.clickedUser=user.id 
-                this.props.history.push("/profile")
-            }}>{user.name},</span>
-         }
-         )}
+        arr=this.props.usersLiked.map((user)=>{
+            return <span><button 
+            className="restaurant-user-button"
+            onClick={()=>{
+            localStorage.clickedUser=user.id 
+            this.props.history.push("/profile")
+            }}>{user.name}</button></span>
+        }
+        )}
         return(
-            <div>who liked this restaurant:{arr}</div>
+            <div style={{textDecoration:"underline"}}>Users who liked this restaurant:{arr}</div>
         )
     }
 }
