@@ -65,9 +65,34 @@ code {
   text-align: center;
 }
 
-.profile-page {
+.profile-page-content {
   text-align: center;
   padding-top: 100px;
+}
+
+.profile-page {
+  background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg");
+  background-size: cover;
+}
+
+.profile-name {
+  border: solid white;
+  border-color: red;
+  background: rgb(37, 32, 32);
+  color:yellow;
+  margin-top: 10px;
+}
+
+.profile-image {
+  border:solid;
+  border-color: white;
+}
+
+.liked-restaurants-list {
+  border: double black;
+  border-color: red;
+  background: rgb(37, 32, 32);
+  color:yellow;
 }
 
 .friends-list {
@@ -82,11 +107,11 @@ code {
   display: flex;
   flex-direction: row;
   overflow: scroll;
-white-space: nowrap;
-max-width: 90vw;
-min-width: 100vh;
-margin-right: 200px;
-margin-left: 100px;
+  white-space: nowrap;
+  max-width: 90vw;
+  min-width: 100vh;
+  margin-right: 200px;
+  margin-left: 100px;
 }
 
 .home-images img{
@@ -115,11 +140,6 @@ li {
 li:hover {
   background-color: rgb(128, 4, 0);
 }
-
-.liked-restaurants-list {
-  border: double black;
-}
-
 
 .home-map{
   padding-left: 250px;

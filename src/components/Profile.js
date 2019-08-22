@@ -111,20 +111,21 @@ class Profile extends React.Component {
         //will always be false^ 
 
         return(
-            <React.Fragment>
+            <div className="profile-page">
                 <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
-                <div className="profile-page">
-                    <h1>{ this.state.user.name }</h1>
+                <div className="profile-page-content">
+                    <img className="profile-image" src="images/foodie-profile-pic.jpg" alt="profile-pic" />
+                    <h1 className="profile-name">{ this.state.user.name }</h1>
                     <br></br>
+                    <ul><h2 style={{color:"yellow", border:"solid white 2px", background:"red"}}>Liked Restaurants:</h2> <div className="liked-restaurants-list">{ userRestaurants }</div></ul>
                     {(boolean)?
                         <button onClick={this.handleAddFriend} >Add Friend</button>
                         :
                         null
                     }
                     {addOrRemoveBoolean? <button onClick={this.handleDeleteFriend}>Remove Friend</button>:null}
-                    <ul>Liked Restaurants: <div className="liked-restaurants-list">{ userRestaurants }</div></ul>
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 
