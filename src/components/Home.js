@@ -10,7 +10,7 @@ import HomeMap from './HomeMap';
 export default class Home extends React.Component {
     
     componentDidMount() {
-        fetch("https://localhost:3000/getFavRestaurants/2")
+        fetch(`https://flatiron-foodie.herokuapp.com/getFavRestaurants/${localStorage.user_id}`)
             .then(resp=>resp.json())
     }
 

@@ -16,7 +16,7 @@ export default class Login extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/tokens`,{
+        fetch(`https://flatiron-foodie.herokuapp.com/tokens`,{
             method:"POST",
             headers:{
                 'Content-Type':"application/json",
@@ -46,7 +46,7 @@ export default class Login extends React.Component{
 
         return(
             <div className="login-page">
-                <img src="images/foodie-logo.png" />
+                <img src="images/foodie-logo.png" alt="logo" />
                 <form onSubmit={ this.handleSubmit }>
                 <input onChange={ this.handleInputChange } value={ this.state.user_name } type="text" placeholder="User Name" name="user_name"/>
                 <br></br><br></br>
