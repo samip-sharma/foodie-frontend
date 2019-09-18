@@ -10,7 +10,11 @@ import HomeMap from './HomeMap';
 export default class Home extends React.Component {
     
     componentDidMount() {
+<<<<<<< HEAD
         fetch(`https://flatiron-foodie.herokuapp.com/getFavRestaurants/${localStorage.user_id}`)
+=======
+        fetch("https://flatiron-foodie.herokuapp.com/getFavRestaurants/2")
+>>>>>>> 1e6a8c0f20e7b41f2901a3bc7a21e3a5a2b460f5
             .then(resp=>resp.json())
     }
 
