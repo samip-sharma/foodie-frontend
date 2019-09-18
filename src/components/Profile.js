@@ -6,7 +6,7 @@ class Profile extends React.Component {
     state = {
         user: [],
         friends: false,
-        current_id:null
+        current_id: null
     }
 
     componentDidMount() {
@@ -23,25 +23,21 @@ class Profile extends React.Component {
     fetchingFriendsList() {
         fetch(`http://localhost:3000/following/${localStorage.user_id}`,
         )
-        .then(resp=>resp.json())
-        .then((data)=>{
-            if (data.length>0){
-                if( data.filter((friend)=>parseInt(friend.id)===parseInt(localStorage.clickedUser)).length>0 ){
-                    console.log("true")
-                    console.log(data[0].id)
-                    console.log(localStorage.clickedUser)
+        .then(resp => resp.json())
+        .then((data) => {
+            if (data.length > 0){
+                if(data.filter((friend) => parseInt(friend.id)===parseInt(localStorage.clickedUser)).length > 0 ){
                     this.setState({
-                        friends:true
+                        friends: true
                     })
                 }
             }
             else{
                 this.setState({
-                    friends:false
+                    friends: false
                 })
             }
-
-            })
+        })
     }
 
     fetchUserFromBackend = () => {
@@ -51,16 +47,14 @@ class Profile extends React.Component {
                 'Content-Type': 'application/json',
                 'Accepts': 'application/json',
                 'Authorization': localStorage.token
+                }
             }
-        }
         )
             .then(resp => resp.json())
             .then(data => {
-                console.log(localStorage.clickedUser)
-                console.log(data)
                 this.setState({   
                 user: data,
-                current_id:data.id
+                current_id: data.id
             })}
             )
     }
@@ -71,15 +65,12 @@ class Profile extends React.Component {
     }
 
     handleAddFriend = () => {
-        //   console.log(localStorage.clickedUser)
-        //   console.log(localStorage.user_id)
         this.setState({
             friends: true
         })
 
         fetch(`http://localhost:3000/users/${localStorage.user_id}/addFriend/${localStorage.clickedUser}`)
             .then(resp => resp.json)
-            .then(console.log)
     }
 
     handleDeleteFriend = () => {
@@ -92,7 +83,6 @@ class Profile extends React.Component {
             method: "DELETE"
         })
             .then(resp => resp.json)
-            .then(console.log)
     }
 
     render() {
@@ -102,8 +92,8 @@ class Profile extends React.Component {
             userRestaurants = this.state.user.restaurants.map((restaurant) => <li onClick={ () => this.handleClick(restaurant.real_id) }> {restaurant.name} </li>)
         }
 
-        let boolean=((localStorage.clickedUser!==localStorage.user_id) && (this.state.friends===false))
-        let addOrRemoveBoolean=(this.state.friends===true && (localStorage.clickedUser!==localStorage.user_id))
+        let boolean = ((localStorage.clickedUser !== localStorage.user_id) && (this.state.friends===false))
+        let addOrRemoveBoolean = (this.state.friends === true && (localStorage.clickedUser!==localStorage.user_id))
 
         return(
             <div className="profile-page">
@@ -125,7 +115,6 @@ class Profile extends React.Component {
             </div>
         )
     }
-
 }
 
 export default Profile

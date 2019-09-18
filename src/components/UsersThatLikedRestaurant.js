@@ -2,12 +2,10 @@ import React from  'react'
 
 export default class UsersThatLikedRestaurant extends React.Component{
 
-
     render () {
         let arr
         if (this.props.usersLiked){
-            console.log(this.props.usersLiked)
-        arr=this.props.usersLiked.map((user)=>{
+        arr = this.props.usersLiked.map((user)=>{
             return <span><button 
             className="restaurant-user-button"
             onClick={()=>{

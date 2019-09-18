@@ -1,9 +1,8 @@
-
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
- 
-const AnyReactComponent = ({ text }) => <div onClick={ (e) => console.log(e.target)} >{text}</div>;
- 
+
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
@@ -12,18 +11,17 @@ class SimpleMap extends Component {
     },
     zoom: 17
   };
- 
+
   render() {
       let coo
       if(this.props.coordinates){
-        coo={
+        coo = {
             lat:this.props.coordinates.latitude,
             lng:this.props.coordinates.longitude
         }
     }
 
     return (
-      // Important! Always set the container height explicitly
       <div className="each-map" style={{ height: '400px', width: '400px' }}>
           {  coo?
                 <GoogleMapReact
@@ -47,5 +45,5 @@ class SimpleMap extends Component {
     );
   }
 }
- 
+
 export default SimpleMap;

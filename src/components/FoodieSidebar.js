@@ -4,7 +4,7 @@ class FoodieSidebar extends React.Component {
   
   state = {
     likedRestaurants: []
-  };
+  }
 
   componentDidMount() {
       fetch(`http://localhost:3000/getFavRestaurants/${localStorage.user_id}`)
@@ -28,9 +28,7 @@ handleClick = (id) => {
               return <li onClick={ () => this.handleClick(restaurant.real_id) } >{ restaurant.name } </li>
             })
       }
-
-      //handleClick => needs to take in restaurant object
-
+      
       return(
           <div className="side-bar">
             <h4>Your Favorite Restaurants</h4>

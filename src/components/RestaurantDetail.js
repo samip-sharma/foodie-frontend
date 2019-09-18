@@ -4,15 +4,14 @@ import RestaurantComments from './RestaurantComments'
 import Map from './Map'
 import UsersThatLikedRestaurant from './UsersThatLikedRestaurant'
 
-
 export default class RestaurantDetail extends React.Component{
 
     state={
-        restaurant:[],
-        liked:false,
-        commentText:'',
-        comments:[],
-        usersLiked:[]
+        restaurant: [],
+        liked: false,
+        commentText: '',
+        comments: [],
+        usersLiked: []
     }
 
     handleDeleteComment = (comment) => {
@@ -36,10 +35,9 @@ export default class RestaurantDetail extends React.Component{
         })
         .then(response=>response.json())
         .then((data)=> {
-            // console.log(data)
             this.setState({
-                liked:data.liked,
-                restaurant:{...data}
+                liked: data.liked,
+                restaurant: {...data}
             })
         })  
 
@@ -47,7 +45,7 @@ export default class RestaurantDetail extends React.Component{
         this.fetchCommentFromBackend()
     }
 
-    fetchCommentFromBackend=()=>{
+    fetchCommentFromBackend = () => {
         fetch("http://localhost:3000/getComments",{
             method:"POST",
             headers:{
@@ -62,7 +60,7 @@ export default class RestaurantDetail extends React.Component{
             )
         })
             .then(resp=>resp.json())
-            .then((data)=>{
+            .then((data) => {
             this.setState({
                 comments:data
             })
@@ -70,7 +68,7 @@ export default class RestaurantDetail extends React.Component{
     }
 
 
-    handleUsersLikeList=()=>{
+    handleUsersLikeList = () => {
 
         fetch(`http://localhost:3000/restaurants/${localStorage.restaurant_id}/users`,{
             method:'GET',
@@ -83,16 +81,14 @@ export default class RestaurantDetail extends React.Component{
         .then(resp=>resp.json())
         .then((data)=>{
             if(!data.error){
-
             this.setState({
                 usersLiked:data
             })
             }
         })
-
     }
 
-    handleLike=()=>{
+    handleLike = () => {
         
         fetch(`http://localhost:3000/addlike`,{
             method:"POST",
@@ -106,16 +102,16 @@ export default class RestaurantDetail extends React.Component{
             restaurant_id:localStorage.restaurant_id,
             restaurant_name:this.state.restaurant.name}
             )
-        }).then(()=>{
+        }).then(() => {
             this.handleUsersLikeList()
             this.setState({
-                liked:!this.state.liked
+                liked: !this.state.liked
             })
         })
     }
 
 
-    handleCommentSubmit=()=>{
+    handleCommentSubmit = () => {
         fetch('http://localhost:3000/addComments',{
             method:"POST",
             headers:{
@@ -129,45 +125,36 @@ export default class RestaurantDetail extends React.Component{
             context:this.state.commentText,
             restaurant_name:this.state.restaurant.name}
             )
-          })
-          .then(resp=>(resp.json()))
-          .then((data)=>{
-
-            if (this.state.comments.length > 0){
-              this.setState({
-                  comments:[...this.state.comments,data]
-              })
-            }else{
-                this.setState({
-                    comments:[data]
-                }) 
-            }
-          })
-          this.setState({
-              commentText: ''
-          })
+        })
+            .then(resp => (resp.json()))
+            .then((data) => {
+                if (this.state.comments.length > 0){
+                    this.setState({
+                        comments:[...this.state.comments,data]
+                    })
+                }else{
+                    this.setState({
+                        comments:[data]
+                    }) 
+                }
+            })
+            this.setState({
+                commentText: ''
+            })
     }
 
-    handleCommentTypeChange=(e)=>{
+    handleCommentTypeChange = (e) => {
         this.setState({
-            commentText:e.target.value
+            commentText: e.target.value
         })
     }
-
-    handleNewlikeCLick=(e)=>{
-        debugger
-        console.log(e.target.className)
-        // e.target.classList<< "animate-like"
-    }
-
 
     render(){
         const {name, categories, rating, price, location, display_phone} = this.state.restaurant
 
         let displayCategories;
         let displayAddress;
-        if (this.state.restaurant.length!==0){
-            // console.log(this.state.restaurant)
+        if (this.state.restaurant.length !== 0){
             displayCategories = categories.map(category => <span>~{category.title}~ </span>);
             displayAddress = location.display_address.join(", ");
         }
@@ -203,8 +190,8 @@ export default class RestaurantDetail extends React.Component{
                     <br></br>
                     <div><textarea value={this.state.commentText} onChange={this.handleCommentTypeChange}></textarea></div>
                     <br></br>
-                    <div> <input className="comment-submit" type="submit" onClick={this.handleCommentSubmit} />
-</div>
+                    <div> <input className="comment-submit" type="submit" onClick={this.handleCommentSubmit} /></div>
+
                 </div>
             </React.Fragment>
         )

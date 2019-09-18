@@ -1,11 +1,10 @@
 import React from 'react';
 
-
 export default class RestaurantInHome extends React.Component{
     
     handleClick = (id) => {
-       localStorage.restaurant_id = id
-       this.props.history.push("/show")
+        localStorage.restaurant_id = id
+        this.props.history.push("/show")
     }
 
     render(){
@@ -17,4 +16,3 @@ export default class RestaurantInHome extends React.Component{
         )
     }
 }
-{/* <p>{this.props.restaurant.name}</p> */}

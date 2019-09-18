@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default class RestaurantComments extends React.Component{
-   
     
     handleDeleteButton = (comment) => {
         this.props.handleDeleteComment(comment)
@@ -9,7 +8,6 @@ export default class RestaurantComments extends React.Component{
     
     render(){
         let allComments
-        console.log(this.props.comments)
         if(this.props.comments.length > 0){
             allComments = this.props.comments.map((comment)=>{
                 return <div><p> <span> {comment.user.name}: </span> {comment.context}

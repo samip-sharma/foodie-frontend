@@ -1,21 +1,20 @@
 import React from 'react'
 
-
 export default class Login extends React.Component{
     
     state = {
-        user_name:'',
-        password:''
+        user_name: '',
+        password: ''
     }
 
 
-    handleInputChange=(e)=>{
+    handleInputChange = (e) => {
         this.setState({
             [e.target.name]:e.target.value
         })
     }
 
-    handleSubmit=(e)=>{
+    handleSubmit = (e) => {
         e.preventDefault()
         fetch(`http://localhost:3000/tokens`,{
             method:"POST",
@@ -26,16 +25,14 @@ export default class Login extends React.Component{
             body: JSON.stringify(this.state)
         })
         .then(response=>response.json())
-        .then((data)=>{
+        .then((data) => {
             if (!data.errors){
                 localStorage.user_id=data.user_id
                 localStorage.clickedUser = data.user_id
                 localStorage.token=data.token
-                this.props.onLogin(this.state)
                 this.props.history.push("/home")
-             }
+            }
         })
-        
     }
 
     handleRegisterClick = () => {
@@ -61,6 +58,5 @@ export default class Login extends React.Component{
                 <button onClick={ this.handleRegisterClick }>Register</button>
             </div>
         )
-
     }
 }
