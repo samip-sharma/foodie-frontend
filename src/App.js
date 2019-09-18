@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import Home from './components/Home'
 import RestaurantDetail from './components/RestaurantDetail'
 import Friendlist from './components/Friendlist'
@@ -43,7 +43,7 @@ class App extends React.Component {
         }
       )
     } else {
-      alert("Cannot get your location from your browser. Using default coordinates.")
+      // alert("Cannot get your location from your browser. Using default coordinates.")
     }
   }
 
@@ -74,6 +74,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <BrowserRouter>
       <Switch>
         <Route exact path='/' render={(routerProps)=> <Login  {...routerProps}/>} />
         <Route path='/home'
@@ -91,6 +92,7 @@ class App extends React.Component {
         <Route path='/show' render={(routerProps)=><RestaurantDetail detailRestaurant={this.state.detailRestaurant} handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps}/>} />
         <Route path='/profile' render={(routerProps) => <Profile handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps} />} />
       </Switch>
+      </BrowserRouter>
     )
   }
 }
