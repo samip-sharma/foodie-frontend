@@ -17,7 +17,7 @@ export default class Register extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/users`,{
+        fetch(`https://flatiron-foodie.herokuapp.com/users`,{
             method:"POST",
             headers:{
                 'Content-Type':"application/json",

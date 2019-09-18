@@ -15,14 +15,14 @@ export default class RestaurantDetail extends React.Component{
     }
 
     handleDeleteComment = (comment) => {
-        fetch(`http://localhost:3000/deleteComment/${comment.id}`, {
+        fetch(`https://flatiron-foodie.herokuapp.com/deleteComment/${comment.id}`, {
             method:"DELETE"
         })
             .then(()=>this.fetchCommentFromBackend())
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/getRestaurantDetail/${localStorage.restaurant_id}`,{
+        fetch(`https://flatiron-foodie.herokuapp.com/getRestaurantDetail/${localStorage.restaurant_id}`,{
             method:"POST",
             headers:{
             "Content-Type":"application/json",
@@ -46,7 +46,7 @@ export default class RestaurantDetail extends React.Component{
     }
 
     fetchCommentFromBackend = () => {
-        fetch("http://localhost:3000/getComments",{
+        fetch("https://flatiron-foodie.herokuapp.com/getComments",{
             method:"POST",
             headers:{
             "Content-Type":"application/json",
@@ -70,7 +70,7 @@ export default class RestaurantDetail extends React.Component{
 
     handleUsersLikeList = () => {
 
-        fetch(`http://localhost:3000/restaurants/${localStorage.restaurant_id}/users`,{
+        fetch(`https://flatiron-foodie.herokuapp.com/restaurants/${localStorage.restaurant_id}/users`,{
             method:'GET',
             headers:{
                 "Accepts":"Application/json",
@@ -90,7 +90,7 @@ export default class RestaurantDetail extends React.Component{
 
     handleLike = () => {
         
-        fetch(`http://localhost:3000/addlike`,{
+        fetch(`https://flatiron-foodie.herokuapp.com/addlike`,{
             method:"POST",
             headers:{
             "Content-Type":"application/json",
@@ -112,7 +112,7 @@ export default class RestaurantDetail extends React.Component{
 
 
     handleCommentSubmit = () => {
-        fetch('http://localhost:3000/addComments',{
+        fetch('https://flatiron-foodie.herokuapp.com/addComments',{
             method:"POST",
             headers:{
             "Content-Type":"application/json",

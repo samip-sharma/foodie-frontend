@@ -48,7 +48,7 @@ class App extends React.Component {
   }
 
   getRestaurantFromYelp = (term="food") => {
-    fetch(`http://localhost:3000/getRestaurant/${term}`, {
+    fetch(`https://flatiron-foodie.herokuapp.com/getRestaurant/${term}`, {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
