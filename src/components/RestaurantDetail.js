@@ -39,10 +39,10 @@ export default class RestaurantDetail extends React.Component{
                 liked: data.liked,
                 restaurant: {...data}
             })
+            this.fetchCommentFromBackend()
         })  
 
         this.handleUsersLikeList()
-        this.fetchCommentFromBackend()
     }
 
     fetchCommentFromBackend = () => {
@@ -53,19 +53,18 @@ export default class RestaurantDetail extends React.Component{
             "Accepts":"application/json",
             "Authorization":localStorage.token
             },
-            body:JSON.stringify(
+            body: JSON.stringify(
             {user_id:localStorage.user_id,
             restaurant_id:localStorage.restaurant_id
-            }
-            )
-        })
-            .then(resp=>resp.json())
-            .then((data) => {
-                // debugger
-            this.setState({
-                comments:data
             })
+        }).then(resp=>resp.json())
+            .then((data) => {
+                if(!data.error){
+            this.setState({ 
+                comments:data
+            })}
         })
+        .catch(console.log("error"))
     }
 
 
