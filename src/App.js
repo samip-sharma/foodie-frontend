@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login'
-import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import { Switch, Route, HashRouter } from 'react-router-dom'
 import Home from './components/Home'
 import RestaurantDetail from './components/RestaurantDetail'
 import Friendlist from './components/Friendlist'
@@ -74,7 +74,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
       <Switch>
         <Route exact path='/' render={(routerProps)=> <Login  {...routerProps}/>} />
         <Route path='/home'
@@ -92,7 +92,7 @@ class App extends React.Component {
         <Route path='/show' render={(routerProps)=><RestaurantDetail detailRestaurant={this.state.detailRestaurant} handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps}/>} />
         <Route path='/profile' render={(routerProps) => <Profile handleSearchRestaurant={this.handleSearchRestaurant} {...routerProps} />} />
       </Switch>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
