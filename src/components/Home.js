@@ -12,11 +12,10 @@ export default class Home extends React.Component {
     componentDidMount() {
         fetch("https://localhost:3000/getFavRestaurants/2")
             .then(resp=>resp.json())
-            .then(console.log)
     }
 
     render() {
-        let arr=this.props.AllRestaurant.map((restaurant) => {
+        let restaurants = this.props.AllRestaurant.map((restaurant) => {
             return <RestaurantInHome history={ this.props.history }  restaurant={restaurant} />
         })
 
@@ -26,7 +25,7 @@ export default class Home extends React.Component {
                 <div className="home-container">
                     <HomeMap coordinates={this.props.coordinates} AllRestaurant={ this.props.AllRestaurant } history = { this.props.history }/>
                     <div className="home-images">
-                    {localStorage.token ? arr : "Dont be too smart"}
+                    {localStorage.token ? restaurants : "LOGIN BUDDY"}
                     </div>
                 </div>
             <FoodieSidebar history = { this.props.history } />

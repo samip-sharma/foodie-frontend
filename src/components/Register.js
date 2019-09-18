@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default class Register extends React.Component{
     
     state = {
@@ -10,13 +9,13 @@ export default class Register extends React.Component{
     }
 
 
-    handleInputChange=(e)=>{
+    handleInputChange = (e) => {
         this.setState({
             [e.target.name]:e.target.value
         })
     }
 
-    handleSubmit=(e)=>{
+    handleSubmit = (e) => {
         e.preventDefault()
         fetch(`http://localhost:3000/users`,{
             method:"POST",
@@ -34,7 +33,6 @@ export default class Register extends React.Component{
                 this.props.history.push('/')
             }
         })
-        
     }
 
     handleLoginClick = () => {
@@ -60,6 +58,5 @@ export default class Register extends React.Component{
                 <button onClick={ this.handleLoginClick }>Login</button>
             </div>
         )
-
     }
 }

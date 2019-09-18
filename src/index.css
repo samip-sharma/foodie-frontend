@@ -317,3 +317,9 @@ li:hover {
   margin-left: 5px;
   background-color: red;
 }
+
+
+.marker-gmap:hover{
+  cursor:crosshair;
+
+}

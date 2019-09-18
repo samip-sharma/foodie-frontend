@@ -1,23 +1,22 @@
 import React from 'react';
 import { Navbar, Nav, Form, FormControl, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
 
 class FoodieNavbar extends React.Component {
 
     state={
-        searchTerm:''
+        searchTerm: ''
     }
 
-    handleSearchInput=(e)=>{
+    handleSearchInput = (e) => {
         this.setState({
             searchTerm:e.target.value
         })
     }
 
-    handleSearchSubmit=(e)=>{
+    handleSearchSubmit = (e) => {
         e.preventDefault()
         this.props.history.push("/home")
-       if (this.state.searchTerm!==
+        if (this.state.searchTerm !==
         "") this.props.handleSearchRestaurant(this.state.searchTerm)
     }
 
@@ -50,14 +49,6 @@ class FoodieNavbar extends React.Component {
                         <Nav className="mr-auto">
                             <Nav.Link onClick={ this.handleProfileClick } href="#home">My Profile</Nav.Link>
                             <Nav.Link onClick={ this.handleFriendlistClick } href="#home">Friendlist</Nav.Link>
-                            {/* <Nav.Link href="#link">Link</Nav.Link>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown> */}
                             <button onClick={ this.handleLogout }>Logout</button>
                             </Nav>
                             <Form onSubmit={this.handleSearchSubmit}  inline>
@@ -67,8 +58,6 @@ class FoodieNavbar extends React.Component {
                     </Navbar.Collapse>
                 </Navbar>
             </div>
-
-
         )
     }
 }

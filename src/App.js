@@ -8,23 +8,16 @@ import Friendlist from './components/Friendlist'
 import Register from './components/Register'
 import Profile from './components/Profile'
 
-
-
-
 class App extends React.Component {
   
-  state={
-    name:'',
-    user_name:'',
-    searchTerm:'',
+  state = {
+    name: '',
+    user_name: '',
+    searchTerm: '',
     AllRestaurant: [],
     detailRestaurant: {},
     xcoordinate: 40.700862,
     ycoordinate: -73.987472
-  }
-
-  onLogin = (user_data) => {
-    console.log(user_data)
   }
 
   componentDidMount() {
@@ -42,7 +35,7 @@ class App extends React.Component {
         position => {
           localStorage.xcoo=position.coords.latitude
           localStorage.ycoo=position.coords.longitude
-          this.setState((prevState)=>({
+          this.setState((prevState) => ({
             xcoordinate:position.coords.latitude,
             ycoordinate:position.coords.longitude
           }),this.getRestaurantFromYelp
@@ -50,7 +43,7 @@ class App extends React.Component {
         }
       )
     } else {
-      console.log("error")
+      alert("Cannot get your location from your browser. Using default coordinates.")
     }
   }
 
@@ -66,7 +59,7 @@ class App extends React.Component {
         ycoo:this.state.ycoordinate}
       )
     })
-      .then(resp=>resp.json())
+      .then(resp => resp.json())
       .then((data) => {
         this.setState({
           AllRestaurant: data.businesses
@@ -80,8 +73,7 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' render={(routerProps)=> <Login  {...routerProps} onLogin={this.onLogin} />} />
-
+        <Route exact path='/' render={(routerProps)=> <Login  {...routerProps}/>} />
         <Route path='/home'
           render={(routerProps) => <Home coordinates={{
           lat:this.state.xcoordinate,
