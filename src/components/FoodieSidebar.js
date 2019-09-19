@@ -7,7 +7,7 @@ class FoodieSidebar extends React.Component {
   }
 
   componentDidMount() {
-      fetch(`http://localhost:3000/getFavRestaurants/${localStorage.user_id}`)
+      fetch(`https://flatiron-foodie.herokuapp.com/getFavRestaurants/${localStorage.user_id}`)
       .then(resp => resp.json())
       .then((data) => {
               this.setState({

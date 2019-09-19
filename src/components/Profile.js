@@ -21,7 +21,7 @@ class Profile extends React.Component {
     }
 
     fetchingFriendsList() {
-        fetch(`http://localhost:3000/following/${localStorage.user_id}`,
+        fetch(`https://flatiron-foodie.herokuapp.com/following/${localStorage.user_id}`,
         )
         .then(resp => resp.json())
         .then((data) => {
@@ -41,7 +41,7 @@ class Profile extends React.Component {
     }
 
     fetchUserFromBackend = () => {
-        fetch(`http://localhost:3000/users/${localStorage.user_id}/${localStorage.clickedUser}`, {
+        fetch(`https://flatiron-foodie.herokuapp.com/users/${localStorage.user_id}/${localStorage.clickedUser}`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ class Profile extends React.Component {
             friends: true
         })
 
-        fetch(`http://localhost:3000/users/${localStorage.user_id}/addFriend/${localStorage.clickedUser}`)
+        fetch(`https://flatiron-foodie.herokuapp.com/users/${localStorage.user_id}/addFriend/${localStorage.clickedUser}`)
             .then(resp => resp.json)
     }
 
@@ -79,7 +79,7 @@ class Profile extends React.Component {
             friends: false
         })
         
-        fetch(`http://localhost:3000/users/${localStorage.user_id}/deleteFriend/${localStorage.clickedUser}`, {
+        fetch(`https://flatiron-foodie.herokuapp.com/users/${localStorage.user_id}/deleteFriend/${localStorage.clickedUser}`, {
             method: "DELETE"
         })
             .then(resp => resp.json)
