@@ -99,7 +99,7 @@ class Profile extends React.Component {
             <div className="profile-page">
                 <FoodieNavbar handleSearchRestaurant={this.props.handleSearchRestaurant} history={this.props.history}/>
                 <div className="profile-page-content">
-                    <img className="profile-image" src="images/foodie-profile-pic.jpg" alt="profile-pic" />
+                    <img className="profile-image" src={require('../image/foodie-profile-pic.jpg')} alt="profile-pic" />
                     <h1 className="profile-name">{ this.state.user.name }</h1>
                     <br></br>
                     <ul><h2 style={{color:"yellow", border:"solid white 2px", background:"red"}}>Liked Restaurants:</h2> <div className="liked-restaurants-list">{ userRestaurants }</div></ul>

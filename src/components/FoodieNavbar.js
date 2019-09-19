@@ -16,8 +16,7 @@ class FoodieNavbar extends React.Component {
     handleSearchSubmit = (e) => {
         e.preventDefault()
         this.props.history.push("/home")
-        if (this.state.searchTerm !==
-        "") this.props.handleSearchRestaurant(this.state.searchTerm)
+        if (this.state.searchTerm !== "") this.props.handleSearchRestaurant(this.state.searchTerm)
     }
 
     handleLogout = () => {

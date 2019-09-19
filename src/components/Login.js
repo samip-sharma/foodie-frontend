@@ -46,7 +46,7 @@ export default class Login extends React.Component{
 
         return(
             <div className="login-page">
-                <img src="images/foodie-logo.png" alt="logo" />
+                <img src={require('../image/Foodie-logo.png')} alt="logo" />
                 <form onSubmit={ this.handleSubmit }>
                 <input onChange={ this.handleInputChange } value={ this.state.user_name } type="text" placeholder="User Name" name="user_name"/>
                 <br></br><br></br>

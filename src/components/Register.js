@@ -42,7 +42,7 @@ export default class Register extends React.Component{
     render(){
         return(
             <div className="register-page">
-                <img src="images/foodie-logo.png" alt="logo" />
+                <img src={require('../image/Foodie-logo.png')} alt="logo" />
                 <h2>Create an Account</h2>
                 <form onSubmit={ this.handleSubmit }>
                 <input onChange={ this.handleInputChange } value={ this.state.name } type="text" placeholder="Name" name="name"/>
