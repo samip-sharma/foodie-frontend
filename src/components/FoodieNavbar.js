@@ -47,8 +47,8 @@ class FoodieNavbar extends React.Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link onClick={ this.handleProfileClick } href="#home">My Profile</Nav.Link>
-                            <Nav.Link onClick={ this.handleFriendlistClick } href="#home">Friendlist</Nav.Link>
+                            <Nav.Link onClick={ this.handleProfileClick } href="#profile">My Profile</Nav.Link>
+                            <Nav.Link onClick={ this.handleFriendlistClick } href="#friendlist">Friendlist</Nav.Link>
                             <button onClick={ this.handleLogout }>Logout</button>
                             </Nav>
                             <Form onSubmit={this.handleSearchSubmit}  inline>
