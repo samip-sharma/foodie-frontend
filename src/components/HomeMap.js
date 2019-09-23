@@ -26,9 +26,10 @@ class HomeMap extends Component {
         />
     })
 
+
     return (
       <div className="home-map" style={{ height: '70vh', width: '80vw' }}>
-          {  coo?
+          {  coo ?
                 <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
                 defaultCenter={this.props.coordinates}
