@@ -49,7 +49,7 @@ export default class Login extends React.Component{
             <div className="login-page">
                 <img src={require('../image/Foodie-logo.png')} alt="logo" />
                 <div className="wrapper-login">
-                    <h2>Welcome Back 🍕</h2>
+                    <h2 style={{ color:"yellow"}}>Welcome Back 🍕</h2>
                     <form onSubmit={ this.handleSubmit }>
                     <input className="username-input"  onChange={ this.handleInputChange } value={ this.state.user_name } type="text" placeholder="User Name" name="user_name"/>
                     <br></br><br></br>
