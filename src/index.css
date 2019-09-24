@@ -93,6 +93,7 @@ code {
 }
 
 .profile-page-content {
+  min-height: 100vh;
   text-align: center;
   padding-top: 100px;
 }
@@ -126,12 +127,41 @@ code {
 }
 
 .friend-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   background-image: url("https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
   background-size: cover;
   height: 100vh;
 }
 
+.friend-search{
+  padding-top:100px;
+  color: white;
+  width:500px;
+}
+
+
+
+.searched-users{
+  margin:10px;
+  padding:10px;
+  border: 1px solid white;
+  width: 300px;
+  text-align: center;
+  align-self: center;
+  font: bold;
+}
+
+.searched-users:hover{
+cursor: pointer;
+background: rgba(0, 0, 0, 0.6);
+color: yellow;
+border: 1px solid yellow;
+}
+
 .friend-list-content {
+  width:500px;
   padding-top: 100px;
   text-align: center;
   color:yellow;
@@ -185,7 +215,8 @@ li {
 
 li:hover {
   background-color: rgb(128, 4, 0);
-  zoom: 1.5;
+  zoom: 1.05;
+  cursor: pointer;
 }
 
 .home-map{
@@ -201,7 +232,7 @@ li:hover {
 
 .each-home-image:hover{
   opacity: 0.8;
-  zoom: 1.1;
+  zoom: 1.05;
 	-webkit-animation: flash 1.5s;
 	animation: flash 1.5s;
   cursor: pointer;

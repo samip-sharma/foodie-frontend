@@ -25,11 +25,12 @@ class FoodieNavbar extends React.Component {
     }
 
     handleHomePageClick=()=>{
+        this.props.handleSearchRestaurant()
         this.props.history.push("/home")
     }
 
     handleProfileClick=()=>{
-        localStorage.clickedUser=localStorage.user_id
+        localStorage.clickedUser = localStorage.user_id
         this.props.history.push("/profile")
     }
     
@@ -42,7 +43,7 @@ class FoodieNavbar extends React.Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <Nav.Link  onClick={this.handleProfileClick}>My Profile</Nav.Link>
-                            <Nav.Link  href="#friendlist">Friendlist</Nav.Link>
+                            <Nav.Link  href="#friendlist">Followed Users</Nav.Link>
                             <Button variant="danger" onClick={ this.handleLogout }>Logout</Button>
                             </Nav>
                             <Form onSubmit={this.handleSearchSubmit}  inline>

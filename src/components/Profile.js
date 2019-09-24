@@ -1,5 +1,6 @@
 import React from 'react';
 import FoodieNavbar from './FoodieNavbar';
+import {Button} from 'react-bootstrap'
 
 class Profile extends React.Component {
 
@@ -105,11 +106,11 @@ class Profile extends React.Component {
                     <ul><h2 style={{color:"yellow", border:"solid white 2px", background:"red"}}>Liked Restaurants:</h2> <div className="liked-restaurants-list">{ userRestaurants }</div></ul>
                     <br></br>
                     {(boolean)?
-                        <button onClick={this.handleAddFriend} >Add Friend</button>
+                        <Button variant="success" onClick={this.handleAddFriend} >Follow</Button>
                         :
                         null
                     }
-                    {addOrRemoveBoolean? <button onClick={this.handleDeleteFriend}>Remove Friend</button>:null}
+                    {addOrRemoveBoolean? <Button variant="danger" onClick={this.handleDeleteFriend}>Unfollow</Button>:null}
                     <br></br><br></br><br></br>
                 </div>
             </div>
